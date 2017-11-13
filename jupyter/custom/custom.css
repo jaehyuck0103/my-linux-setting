@@ -1,5 +1,5 @@
 /*
-1) jt -t onedork -fs 95 -tfs 11 -nfs 115 -cellw 95% -T -f bitstream -cursw 0 -vim -P -altmd
+1) jt -t onedork -fs 95 -tfs 11 -nfs 115 -cellw 95% -T -f bitstream -cursw 1 -cursc g -vim -P -altmd
 2) 아래 코드 주석
 div.prompt.input_prompt {
  display: none !important;
@@ -3012,7 +3012,7 @@ div.CodeMirror-linenumber,
  color: #526488;
 }
 .cm-s-ipython .CodeMirror-cursor {
- border-left: 0px solid #0095ff !important;
+ border-left: 1px solid #94c273 !important;
 }
 .cm-s-ipython span.cm-comment {
  color: #526488;
@@ -3147,7 +3147,7 @@ div.cell.text_cell .cm-s-default span.cm-variable-3 {
  color: #61afef;
 }
 .CodeMirror-cursor {
- border-left: 0px solid #0095ff !important;
+ border-left: 1px solid #94c273 !important;
  border-right: none;
  width: 0;
 }
