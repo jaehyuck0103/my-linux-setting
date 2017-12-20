@@ -149,7 +149,8 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'Valloric/YouCompleteMe'
 
 " syntax check
-Bundle 'scrooloose/syntastic'
+" Bundle 'scrooloose/syntastic'
+Bundle 'w0rp/ale'
 " nerd tree
 Bundle 'scrooloose/nerdtree'
 " python-mode
