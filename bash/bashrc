@@ -1,7 +1,7 @@
 # cuda toolkit
-
 export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
+export CUDA_ROOT=/usr/local/cuda
 
 # caffe python
 export PYTHONPATH=~/Util/caffe-master/python:$PYTHONPATH
@@ -9,4 +9,5 @@ export PYTHONPATH=~/Util/caffe-master/python:$PYTHONPATH
 # opencv
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
-
+# turbovnc
+export PATH=/opt/TurboVNC/bin:$PATH
