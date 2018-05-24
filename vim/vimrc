@@ -10,25 +10,18 @@ scripte utf-8
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 프로그램 기본 설정 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " 오리지널 Vi 와의 호환성을 없애고, Vim 만의 기능들을 쓸 수 있게 함. "
 set nocp
-
 " 모든 옵션을 원래대로 복원 "
 set all&
-
 " 명령어 기록을 남길 갯수 지정 "
 set hi=100
-
 " 오류음 대신 비주얼벨 사용 "
 set vb
-
 " 매크로 실행중에 화면을 다시 그리지 않음 "
 set lz
-
 " 프로그램 시작시 플러그인 로드 "
 set lpl
-
 " 인코딩 설정 "
 " 문서를 읽을 때 BOM 을 자동으로 제거하려면, fencs 맨 앞에 ucs-bom 를 추가하세요. "
 "let &tenc=&enc "
@@ -40,18 +33,6 @@ set fencs=utf-8,cp949,cp932,euc-jp,shift-jis,big5,ucs-2le,latin1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 편집 기능 설정 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" 입력모드에서 Ctrl+d로 백스페이스 기능 "
-map! <C-d> <BS>
-
-" Shift+Enter로 아래줄로 커서 넘기기 기능 "
-map <S-CR> <ESC>o
-map! <S-CR> <ESC>o
-
-
-" 현재 줄의 마지막에 이어 쓰기 "
-map! <C-TAB> <S-CR><ESC>i<BACKSPACE>
-
 " 파일의 종류를 자동으로 인식 "
 filetype on
 
@@ -85,39 +66,24 @@ set tags+=./tags        " add current directory's generated tags file to availab
 set textwidth=100        " 100 column이 넘으면 자동 개행"
 set colorcolumn=100      " 100 column에 표시"
 
-"autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+
+" background 색 변경
+set background=dark
+
+" terminal mode setting
+tnoremap <Esc> <C-\><C-N>
+
+
+
+
+
+
 
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim 개인 설정 완료  "
+" Vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" background 색 변경"
-highlight normal ctermbg=darkgrey
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -162,6 +128,8 @@ autocmd FileType python set colorcolumn=99
 let g:pymode_python = 'python3'
 " HiCursorWords
 Plugin 'ihacklog/hicursorwords'
+" Color scheme
+Plugin 'flazz/vim-colorschemes'
 
 
 " All of your Plugins must be added before the following line
@@ -178,3 +146,8 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+"
+"
+
+set t_Co=256   " nvim에서는 필요 없음. vim에서는 기본값이 8임.
+colorscheme PaperColor
