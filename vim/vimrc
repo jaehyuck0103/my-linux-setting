@@ -1,153 +1,119 @@
-scripte utf-8
-" vim: set fenc=utf-8 tw=0: "
-" 파일의 첫부분에 위의 2줄을 꼭 남겨 두십시오. "
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath+=/home/jae/.cache/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('/home/jae/.cache/dein')
+  call dein#begin('/home/jae/.cache/dein')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('/home/jae/.cache/dein/repos/github.com/Shougo/dein.vim')
+
+  " -----
+  " Add or remove your plugins here:
+  " -----
+  
+  " YouCompleteMe alternative
+  call dein#add('Shougo/deoplete.nvim')
+  let g:deoplete#enable_at_startup = 1
+
+  " Color scheme
+  call dein#add('flazz/vim-colorschemes')
+
+  " HiCursorWords
+  call dein#add('ihacklog/hicursorwords')
+
+  " Asynchronous Lint Engine
+  call dein#add('w0rp/ale')
+
+  " python-mode
+  call dein#add('klen/python-mode')
+  let g:pymode_folding = 0
+  let g:pymode_rope = 0
+  let g:pymode_options_max_line_length = 99
+  let g:pymode_python = 'python3'
+  autocmd FileType python set colorcolumn=99
+
+  " 보류
+  " call dein#add('tpope/vim-fugitive')
+  " call dein#add('Shougo/deol.nvim')
+  " call dein#add('Shougo/neosnippet.vim')
+  " call dein#add('Shougo/neosnippet-snippets')
+  " call dein#add('scrooloose/nerdtree')  " 기본 내장 netrw 사용해보고
+  " L9  " script 모음??
+  " command-ta " Fast File navigation
+  " sparkup  " A parser for a condensed HTML format
+  " airline
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+
+" call vim-colorschemes 바로 밑이 놓았더니 왠지 모르겠지만 안된다.
+set background=dark
+set t_Co=256    "nvim에서는 필요없음. vim에서는 기본값이 8임.
+colorscheme PaperColor
+
+" terminal mode escape key setting
+tnoremap <Esc> <C-\><C-N>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 6l4ck3y3(까막눈)의 Vim 설정 파일 "
-" 마지막 수정: 2010-06-14 "
+" 기타 프로그램 기본 설정 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"set hi=100  " 명령어 기록을 남길 갯수 지정
+set vb  " 오류음 대신 비주얼벨 사용
+"set lz  " 매크로 실행중에 화면을 다시 그리지 않음
+"set lpl  " 프로그램 시작시 플러그인 로드
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 프로그램 기본 설정 "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 오리지널 Vi 와의 호환성을 없애고, Vim 만의 기능들을 쓸 수 있게 함. "
-set nocp
-" 모든 옵션을 원래대로 복원 "
-set all&
-" 명령어 기록을 남길 갯수 지정 "
-set hi=100
-" 오류음 대신 비주얼벨 사용 "
-set vb
-" 매크로 실행중에 화면을 다시 그리지 않음 "
-set lz
-" 프로그램 시작시 플러그인 로드 "
-set lpl
-" 인코딩 설정 "
+" 인코딩 설정 " 필요한가?
 " 문서를 읽을 때 BOM 을 자동으로 제거하려면, fencs 맨 앞에 ucs-bom 를 추가하세요. "
-"let &tenc=&enc "
-set enc=utf-8
-set fenc=utf-8
-set fencs=utf-8,cp949,cp932,euc-jp,shift-jis,big5,ucs-2le,latin1
+" set enc=utf-8
+" set fenc=utf-8
+" set fencs=utf-8,cp949,cp932,euc-jp,shift-jis,big5,ucs-2le,latin1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 편집 기능 설정 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 파일의 종류를 자동으로 인식 "
-filetype on
-
-" 자동 문법 강조 "
-syntax on 
-
-set nocompatible         " Vim 디폴트 기능들을 사용함 "
-set number                " 줄 번호를 붙임  "
-set backspace=2         " 삽입 모드에서 백스페이스를 계속 허용 "
-set autoindent             " 자동 들여쓰기 "
-set cindent             " C 언어 자동 들여쓰기 "
-set smartindent         " 역시 자동 들여쓰기 "
-set nowrap                 " 자동 줄바꿈 안함  "
-set nowrapscan             " 찾기에서 파일의 맨 끝에 이르면 계속하여 찾지 않음 "
-set ignorecase             " 찾기에서 대/소문자를 구별하지 않음 "
-set incsearch             " 점진적으로 찾기  "
-set nobackup             " 백업파일을 만들지 않음 "
-set nojoinspaces         " J 명령어로 줄을 붙일 때 마침표 뒤에 한칸만 띔 "
-set ruler                 " 상태표시줄에 커서 위치를 보여줌 "
-set tabstop=2             " 간격 "
-set shiftwidth=2         " 자동 들여쓰기 간격 "
-set expandtab           " 탭을 스페이스로 바꿔줌 "
-set keywordprg=ydic        " K를 눌렀을 때 실행할 명령어 "
-set showcmd             " (부분적인)명령어를 상태라인에 보여줌 "
-set showmatch             " 매치되는 괄호의 반대쪽을 보여줌 "
-set autowrite             " :next나  :make 같은 명령를 입력하면 자동으로 저장 "
-set linespace=3         " 줄간격 "
-set title                 " 타이틀바에 현재 편집중인 파일을 표시 "
-set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\     " 다중 문서 작업을 위한 Status 줄 "
-set tags+=./tags        " add current directory's generated tags file to available tags "
-set textwidth=100        " 100 column이 넘으면 자동 개행"
-set colorcolumn=100      " 100 column에 표시"
-
-
-" background 색 변경
-set background=dark
-
-" terminal mode setting
-tnoremap <Esc> <C-\><C-N>
-
-
-
-
-
-
-
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
-" YouCompleteMe
-Bundle 'Valloric/YouCompleteMe'
-
-" syntax check
-" Bundle 'scrooloose/syntastic'
-Bundle 'w0rp/ale'
-" nerd tree
-Bundle 'scrooloose/nerdtree'
-" python-mode
-Plugin 'klen/python-mode'
-let g:pymode_folding = 0
-let g:pymode_rope = 0
-let g:pymode_options_max_line_length=99
-autocmd FileType python set colorcolumn=99
-let g:pymode_python = 'python3'
-" HiCursorWords
-Plugin 'ihacklog/hicursorwords'
-" Color scheme
-Plugin 'flazz/vim-colorschemes'
-
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"
-"
-
-set t_Co=256   " nvim에서는 필요 없음. vim에서는 기본값이 8임.
-colorscheme PaperColor
+set number                " 줄 번호를 붙임 
+" set backspace=2         " 삽입 모드에서 백스페이스를 계속 허용
+" set autoindent             " 자동 들여쓰기
+" set cindent             " C 언어 자동 들여쓰기
+" set smartindent         " 역시 자동 들여쓰기
+set nowrap                 " 자동 줄바꿈 안함 
+set nowrapscan             " 찾기에서 파일의 맨 끝에 이르면 계속하여 찾지 않음
+" set ignorecase             " 찾기에서 대/소문자를 구별하지 않음
+" set incsearch             " 점진적으로 찾기
+" set nobackup             " 백업파일을 만들지 않음
+" set nojoinspaces         " J 명령어로 줄을 붙일 때 마침표 뒤에 한칸만 띔
+" set ruler                 " 상태표시줄에 커서 위치를 보여줌
+" set tabstop=2             " 간격
+" set shiftwidth=2         " 자동 들여쓰기 간격
+" set expandtab           " 탭을 스페이스로 바꿔줌
+" set keywordprg=ydic        " K를 눌렀을 때 실행할 명령어
+" set showcmd             " (부분적인)명령어를 상태라인에 보여줌
+" set showmatch             " 매치되는 괄호의 반대쪽을 보여줌
+" set autowrite             " :next나  :make 같은 명령를 입력하면 자동으로 저장
+" set linespace=3         " 줄간격
+set title                 " 타이틀바에 현재 편집중인 파일을 표시
+set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\     " 다중 문서 작업을 위한 Status 줄
+" set tags+=./tags        " add current directory's generated tags file to available tags
+" set textwidth=100        " 100 column이 넘으면 자동 개행
+" set colorcolumn=100      " 100 column에 표시
