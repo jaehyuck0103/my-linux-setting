@@ -11,3 +11,6 @@ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 # turbovnc
 export PATH=/opt/TurboVNC/bin:$PATH
+
+# alias
+alias vim='nvim'
