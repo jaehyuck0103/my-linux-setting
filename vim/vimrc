@@ -39,6 +39,13 @@ if dein#load_state('/home/jae/.cache/dein')
   let g:pymode_python = 'python3'
   autocmd FileType python set colorcolumn=99
 
+  " indetLine
+  call dein#add('Yggdroot/indentLine')
+
+  " lightline
+  call dein#add('itchyny/lightline.vim')
+  
+
   " 보류
   " call dein#add('tpope/vim-fugitive')
   " call dein#add('Shougo/deol.nvim')
@@ -106,14 +113,13 @@ set nowrapscan             " 찾기에서 파일의 맨 끝에 이르면 계속�
 " set ruler                 " 상태표시줄에 커서 위치를 보여줌
 " set tabstop=2             " 간격
 " set shiftwidth=2         " 자동 들여쓰기 간격
-" set expandtab           " 탭을 스페이스로 바꿔줌
+set expandtab           " 탭을 스페이스로 바꿔줌
 " set keywordprg=ydic        " K를 눌렀을 때 실행할 명령어
 " set showcmd             " (부분적인)명령어를 상태라인에 보여줌
 " set showmatch             " 매치되는 괄호의 반대쪽을 보여줌
 " set autowrite             " :next나  :make 같은 명령를 입력하면 자동으로 저장
 " set linespace=3         " 줄간격
 set title                 " 타이틀바에 현재 편집중인 파일을 표시
-set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\     " 다중 문서 작업을 위한 Status 줄
 " set tags+=./tags        " add current directory's generated tags file to available tags
 " set textwidth=100        " 100 column이 넘으면 자동 개행
 " set colorcolumn=100      " 100 column에 표시
