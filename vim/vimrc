@@ -1,4 +1,6 @@
-"dein Scripts-----------------------------
+" --------------------------------------------------
+"  dein 기본 설정
+" --------------------------------------------------
 if &compatible
   set nocompatible               " Be iMproved
 endif
@@ -17,33 +19,13 @@ if dein#load_state('/home/jae/.cache/dein')
   " -----
   " Add or remove your plugins here:
   " -----
-  
-  " YouCompleteMe alternative
-  call dein#add('Shougo/deoplete.nvim')
-  let g:deoplete#enable_at_startup = 1
-
-  " Color scheme
-  call dein#add('flazz/vim-colorschemes')
-
-  " HiCursorWords
+  call dein#add('w0rp/ale')  " Asynchronous Lint Engine
+  call dein#add('Shougo/deoplete.nvim')  " YoucompleteMe alternative
   call dein#add('ihacklog/hicursorwords')
-
-  " Asynchronous Lint Engine
-  call dein#add('w0rp/ale')
-
-  " python-mode
-  call dein#add('klen/python-mode')
-  let g:pymode_folding = 0
-  let g:pymode_rope = 0
-  let g:pymode_options_max_line_length = 99
-  let g:pymode_python = 'python3'
-
-  " indetLine
   call dein#add('Yggdroot/indentLine')
-
-  " lightline
   call dein#add('itchyny/lightline.vim')
-  
+  call dein#add('klen/python-mode')
+  call dein#add('flazz/vim-colorschemes')
 
   " 보류
   " call dein#add('tpope/vim-fugitive')
@@ -70,19 +52,31 @@ if dein#check_install()
   call dein#install()
 endif
 
+" --------------------------------------------------
+"  dein 설치 패키지 관련 세부 설정
+" --------------------------------------------------
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
-" call vim-colorschemes 바로 밑이 놓았더니 왠지 모르겠지만 안된다.
+" python-mode
+let g:pymode_folding = 0
+let g:pymode_rope = 0
+let g:pymode_options_max_line_length = 99
+let g:pymode_python = 'python3'
+
+" vim-colorschemes
 set background=dark
-set t_Co=256    "nvim에서는 필요없음. vim에서는 기본값이 8임.
+set t_Co=256    " nvim에서는 필요없음. vim에서는 기본값이 8임.
 colorscheme PaperColor
 
+
+" --------------------------------------------------
+"  기타 프로그램 기본 설정
+" --------------------------------------------------
 " terminal mode escape key setting
 tnoremap <Esc> <C-\><C-N>
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 기타 프로그램 기본 설정 "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set hi=100  " 명령어 기록을 남길 갯수 지정
 set vb  " 오류음 대신 비주얼벨 사용
 "set lz  " 매크로 실행중에 화면을 다시 그리지 않음
@@ -95,9 +89,10 @@ set vb  " 오류음 대신 비주얼벨 사용
 " set fencs=utf-8,cp949,cp932,euc-jp,shift-jis,big5,ucs-2le,latin1
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 편집 기능 설정 "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" --------------------------------------------------
+"  편집 기능 설정
+" --------------------------------------------------
 set number                " 줄 번호를 붙임 
 " set backspace=2         " 삽입 모드에서 백스페이스를 계속 허용
 " set autoindent             " 자동 들여쓰기
@@ -121,5 +116,5 @@ set expandtab           " 탭을 스페이스로 바꿔줌
 set title                 " 타이틀바에 현재 편집중인 파일을 표시
 " set tags+=./tags        " add current directory's generated tags file to available tags
 " set textwidth=100        " 100 column이 넘으면 자동 개행
-set colorcolumn=100      " 100 column에 표시
+" set colorcolumn=100      " 100 column에 표시
 " autocmd FileType python set colorcolumn=99  " File Type별 column 설정
