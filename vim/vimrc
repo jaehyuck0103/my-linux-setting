@@ -37,7 +37,6 @@ if dein#load_state('/home/jae/.cache/dein')
   let g:pymode_rope = 0
   let g:pymode_options_max_line_length = 99
   let g:pymode_python = 'python3'
-  autocmd FileType python set colorcolumn=99
 
   " indetLine
   call dein#add('Yggdroot/indentLine')
@@ -122,4 +121,5 @@ set expandtab           " 탭을 스페이스로 바꿔줌
 set title                 " 타이틀바에 현재 편집중인 파일을 표시
 " set tags+=./tags        " add current directory's generated tags file to available tags
 " set textwidth=100        " 100 column이 넘으면 자동 개행
-" set colorcolumn=100      " 100 column에 표시
+set colorcolumn=100      " 100 column에 표시
+" autocmd FileType python set colorcolumn=99  " File Type별 column 설정
