@@ -21,10 +21,12 @@ if dein#load_state('/home/jae/.cache/dein')
   " -----
   call dein#add('w0rp/ale')  " Asynchronous Lint Engine
   call dein#add('Shougo/deoplete.nvim')  " YoucompleteMe alternative
+  call dein#add('zchee/deoplete-jedi')  " deoplete의 python용 completion source
   call dein#add('ihacklog/hicursorwords')
   call dein#add('Yggdroot/indentLine')
   call dein#add('itchyny/lightline.vim')
   call dein#add('klen/python-mode')
+  call dein#add('ervandew/supertab')  " 자동완성을 tab으로 할 수 있도록
   call dein#add('flazz/vim-colorschemes')
 
   " 보류
@@ -63,6 +65,9 @@ let g:pymode_folding = 0
 let g:pymode_rope = 0
 let g:pymode_options_max_line_length = 99
 let g:pymode_python = 'python3'
+
+" supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"  " completion menu 위에서 아래로 스크롤하도록.
 
 " vim-colorschemes
 set background=dark
@@ -118,3 +123,4 @@ set title                 " 타이틀바에 현재 편집중인 파일을 표시
 " set textwidth=100        " 100 column이 넘으면 자동 개행
 " set colorcolumn=100      " 100 column에 표시
 " autocmd FileType python set colorcolumn=99  " File Type별 column 설정
+set completeopt-=preview  " completion preview window 안뜨도록
