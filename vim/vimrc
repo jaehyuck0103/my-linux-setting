@@ -27,7 +27,8 @@ if dein#load_state('/home/jae/.cache/dein')
   call dein#add('itchyny/lightline.vim')
   call dein#add('klen/python-mode')
   call dein#add('ervandew/supertab')  " 자동완성을 tab으로 할 수 있도록
-  call dein#add('flazz/vim-colorschemes')
+  " call dein#add('flazz/vim-colorschemes')
+  call dein#add('NLKNguyen/papercolor-theme')
 
   " 보류
   " call dein#add('tpope/vim-fugitive')
@@ -57,6 +58,9 @@ endif
 " --------------------------------------------------
 "  dein 설치 패키지 관련 세부 설정
 " --------------------------------------------------
+" ale
+let b:ale_linters = {'python': ['flake8']}
+
 " deoplete
 let g:deoplete#enable_at_startup = 1
 
@@ -71,8 +75,22 @@ let g:SuperTabDefaultCompletionType = "<c-n>"  " completion menu 위에서 아�
 
 " vim-colorschemes
 set background=dark
-set t_Co=256    " nvim에서는 필요없음. vim에서는 기본값이 8임.
+" set t_Co=256    " nvim에서는 필요없음. vim에서는 기본값이 8임.
+let g:PaperColor_Theme_Options = {
+  \   'language': {
+  \     'python': {
+  \       'highlight_builtins' : 1
+  \     },
+  \     'cpp': {
+  \       'highlight_standard_library': 1
+  \     },
+  \     'c': {
+  \       'highlight_builtins' : 1
+  \     }
+  \   }
+  \ }
 colorscheme PaperColor
+" colorscheme molokai
 
 
 " --------------------------------------------------
