@@ -14,3 +14,4 @@ export PATH=/opt/TurboVNC/bin:$PATH
 
 # alias
 alias vim='nvim'
+alias tmux='tmux -2'
