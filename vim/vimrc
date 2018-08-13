@@ -24,11 +24,13 @@ if dein#load_state('/home/jae/.cache/dein')
   call dein#add('zchee/deoplete-jedi')  " deoplete의 python용 completion source
   call dein#add('ihacklog/hicursorwords')
   call dein#add('Yggdroot/indentLine')
-  call dein#add('itchyny/lightline.vim')
   call dein#add('klen/python-mode')
   call dein#add('ervandew/supertab')  " 자동완성을 tab으로 할 수 있도록
   " call dein#add('flazz/vim-colorschemes')
   call dein#add('NLKNguyen/papercolor-theme')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
+  call dein#add('tpope/vim-unimpaired')  " buffer 스위칭 단축키가 잘 맵핑 되어 있음.
 
   " 보류
   " call dein#add('tpope/vim-fugitive')
@@ -92,6 +94,13 @@ let g:PaperColor_Theme_Options = {
 colorscheme PaperColor
 " colorscheme molokai
 
+" vim-airline  " buffer list와 대응하는 넘버를 탭처럼 표시해준다.
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+" vim-airline-theme
+let g:airline_theme='minimalist'
 
 " --------------------------------------------------
 "  기타 프로그램 기본 설정
