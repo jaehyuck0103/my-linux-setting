@@ -151,3 +151,11 @@ set title                 " 타이틀바에 현재 편집중인 파일을 표시
 " set colorcolumn=100      " 100 column에 표시
 " autocmd FileType python set colorcolumn=99  " File Type별 column 설정
 set completeopt-=preview  " completion preview window 안뜨도록
+
+
+" ---------------
+"  키 맵핑
+" ---------------
+" buffer 스위칭 관련 맵핑
+nnoremap gb :bn<CR>
+nnoremap gB :bp<CR>
