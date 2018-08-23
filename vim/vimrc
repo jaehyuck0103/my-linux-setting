@@ -22,7 +22,7 @@ if dein#load_state('/home/jae/.cache/dein')
   call dein#add('w0rp/ale')  " Asynchronous Lint Engine
   call dein#add('Shougo/deoplete.nvim')  " YoucompleteMe alternative
   call dein#add('zchee/deoplete-jedi')  " deoplete의 python용 completion source
-  call dein#add('ihacklog/hicursorwords')
+  call dein#add('Jae-Hyuck/hicursorwords')
   call dein#add('Yggdroot/indentLine')
   call dein#add('klen/python-mode')
   call dein#add('ervandew/supertab')  " 자동완성을 tab으로 할 수 있도록
