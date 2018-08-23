@@ -21,6 +21,7 @@ if dein#load_state('/home/jae/.cache/dein')
   " -----
   call dein#add('w0rp/ale')  " Asynchronous Lint Engine
   call dein#add('Shougo/deoplete.nvim')  " YoucompleteMe alternative
+  call dein#add('zchee/deoplete-clang') " deoplete의 c/c++용 completion source,  apt install clang-dev 필요
   call dein#add('zchee/deoplete-jedi')  " deoplete의 python용 completion source
   call dein#add('Jae-Hyuck/hicursorwords')
   call dein#add('Yggdroot/indentLine')
@@ -65,6 +66,10 @@ let b:ale_linters = {'python': ['flake8']}
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+
+" deoplete-clang
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-6.0/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 
 " python-mode
 let g:pymode_folding = 0
@@ -151,6 +156,10 @@ set title                 " 타이틀바에 현재 편집중인 파일을 표시
 " set colorcolumn=100      " 100 column에 표시
 " autocmd FileType python set colorcolumn=99  " File Type별 column 설정
 set completeopt-=preview  " completion preview window 안뜨도록
+
+set tabstop=4  " Tab 너비
+set shiftwidth=4  " 자동 인덴트할 때 너비
+set expandtab  " Tab을 spaces로
 
 
 " ---------------
