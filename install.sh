@@ -6,4 +6,6 @@ ln -s $(realpath ./pip/pip.conf) ~/.pip/
 
 ln -s $(realpath ./tmux/tmux.conf) ~/.tmux.conf
 
+ln -s $(realpath ./flake8/flake8) ~/.config/flake8
+
 cat ./bash/bashrc >> ~/.bashrc
