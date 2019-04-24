@@ -21,7 +21,7 @@ if dein#load_state('/home/jae/.cache/dein')
   " -----
   call dein#add('w0rp/ale')  " Asynchronous Lint Engine
   call dein#add('Shougo/deoplete.nvim')  " YoucompleteMe alternative
-  call dein#add('zchee/deoplete-clang') " deoplete의 c/c++용 completion source,  apt install clang-dev 필요
+  call dein#add('zchee/deoplete-clang') " deoplete의 c/c++용 completion source,  apt install libclang-dev 필요
   call dein#add('zchee/deoplete-jedi')  " deoplete의 python용 completion source
   call dein#add('Jae-Hyuck/hicursorwords')
   call dein#add('Yggdroot/indentLine')
