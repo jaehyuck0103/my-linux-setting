@@ -20,9 +20,14 @@ if dein#load_state('/home/jae/.cache/dein')
   " Add or remove your plugins here:
   " -----
   call dein#add('w0rp/ale')  " Asynchronous Lint Engine
-  call dein#add('Shougo/deoplete.nvim')  " YoucompleteMe alternative
-  call dein#add('zchee/deoplete-clang') " deoplete의 c/c++용 completion source,  apt install libclang-dev 필요
-  call dein#add('zchee/deoplete-jedi')  " deoplete의 python용 completion source
+
+  call dein#add('roxma/nvim-yarp')  " ncm2 dependency
+  call dein#add('ncm2/ncm2')  " YCM, deoplete alternative
+  call dein#add('ncm2/ncm2-bufword')
+  call dein#add('ncm2/ncm2-path')
+  call dein#add('ncm2/ncm2-jedi')  " ncm2의 python용 completion source
+  call dein#add('ncm2/ncm2-pyclang')  " ncm2의 c/c++용 completion source,  apt install clang libclang-dev 필요
+
   call dein#add('Jae-Hyuck/hicursorwords')
   call dein#add('Yggdroot/indentLine')
   call dein#add('klen/python-mode')
@@ -31,7 +36,7 @@ if dein#load_state('/home/jae/.cache/dein')
   call dein#add('NLKNguyen/papercolor-theme')
   call dein#add('vim-airline/vim-airline')
   call dein#add('vim-airline/vim-airline-themes')
-  call dein#add('tpope/vim-unimpaired')  " buffer 스위칭 단축키가 잘 맵핑 되어 있음.
+  " call dein#add('tpope/vim-unimpaired')  " buffer 스위칭 단축키가 잘 맵핑 되어 있음.
 
   " 보류
   " call dein#add('tpope/vim-fugitive')
@@ -64,12 +69,16 @@ endif
 " ale
 let b:ale_linters = {'python': ['flake8']}
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
+"""" ncm2
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
 
-" deoplete-clang
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-6.0/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+let g:ncm2_pyclang#library_path = '/usr/lib/llvm-6.0/lib/libclang.so'
+" go to declaration
+autocmd FileType c,cpp nnoremap <buffer> gd :<c-u>call ncm2_pyclang#goto_declaration()<cr>
+""""
 
 " python-mode
 let g:pymode_folding = 0
@@ -155,7 +164,7 @@ set title                 " 타이틀바에 현재 편집중인 파일을 표시
 " set textwidth=100        " 100 column이 넘으면 자동 개행
 " set colorcolumn=100      " 100 column에 표시
 " autocmd FileType python set colorcolumn=99  " File Type별 column 설정
-set completeopt-=preview  " completion preview window 안뜨도록
+" set completeopt-=preview  " completion preview window 안뜨도록
 
 set tabstop=4  " Tab 너비
 set shiftwidth=4  " 자동 인덴트할 때 너비
