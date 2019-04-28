@@ -19,6 +19,7 @@ if dein#load_state('/home/jae/.cache/dein')
   " -----
   " Add or remove your plugins here:
   " -----
+  "     
   call dein#add('w0rp/ale')  " Asynchronous Lint Engine
 
   call dein#add('roxma/nvim-yarp')  " ncm2 dependency
@@ -26,7 +27,10 @@ if dein#load_state('/home/jae/.cache/dein')
   call dein#add('ncm2/ncm2-bufword')
   call dein#add('ncm2/ncm2-path')
   call dein#add('ncm2/ncm2-jedi')  " ncm2의 python용 completion source
-  call dein#add('ncm2/ncm2-pyclang')  " ncm2의 c/c++용 completion source,  apt install clang libclang-dev 필요
+
+  call dein#add('prabirshrestha/async.vim')  " ncm2에 lsp 사용할 수 있도록
+  call dein#add('prabirshrestha/vim-lsp')  " ncm2에 lsp 사용할 수 있도록
+  call dein#add('ncm2/ncm2-vim-lsp')  "ncm2에 lsp 사용할 수 있도록
 
   call dein#add('Jae-Hyuck/hicursorwords')
   call dein#add('Yggdroot/indentLine')
@@ -68,17 +72,25 @@ endif
 " --------------------------------------------------
 " ale
 let b:ale_linters = {'python': ['flake8']}
+let b:ale_linters = {'cpp': ['clangd']}  " clangd 설치 필요
 
 """" ncm2
-" enable ncm2 for all buffers
+" enable ncm2 for all buffers, ncm2 기본 설정
 autocmd BufEnter * call ncm2#enable_for_buffer()
-" IMPORTANT: :help Ncm2PopupOpen for more information
+" IMPORTANT: :help Ncm2PopupOpen for more information, ncm2 기본 설정
 set completeopt=noinsert,menuone,noselect
 
-let g:ncm2_pyclang#library_path = '/usr/lib/llvm-6.0/lib/libclang.so'
+" ncm2 c++ completer로 clangd 사용
+if executable('clangd')  " clangd 설치 필요
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd', '-background-index']},
+        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+        \ })
+endif
 " go to declaration
-autocmd FileType c,cpp nnoremap <buffer> gd :<c-u>call ncm2_pyclang#goto_declaration()<cr>
-""""
+autocmd FileType c,cpp nnoremap <buffer> gd :LspDefinition<cr>
+"""""""""""
 
 " python-mode
 let g:pymode_folding = 0
