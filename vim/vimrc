@@ -71,8 +71,7 @@ endif
 "  dein 설치 패키지 관련 세부 설정
 " --------------------------------------------------
 " ale
-let b:ale_linters = {'python': ['flake8']}
-let b:ale_linters = {'cpp': ['clangd']}  " clangd 설치 필요
+let g:ale_linters = {'python': ['flake8'], 'cpp': ['clangd']}  " clangd 설치 필요
 
 """" ncm2
 " enable ncm2 for all buffers, ncm2 기본 설정
