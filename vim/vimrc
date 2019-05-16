@@ -26,13 +26,16 @@ Plug 'ncm2/ncm2-vim-lsp'         " ncm2에 lsp 사용할 수 있도록
 
 Plug 'Jae-Hyuck/hicursorwords'
 Plug 'Yggdroot/indentLine'
-Plug 'klen/python-mode'
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'ervandew/supertab'  " 자동완성을 tab으로 할 수 있도록
 " Plug 'flazz/vim-colorschemes'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug'tpope/vim-unimpaired'   " buffer 스위칭 단축키가 잘 맵핑 되어 있음.
+
+" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " 파이썬 전용 syntax highlight
+
 
 " 보류
 " Plug 'tpope/vim-fugitive'
