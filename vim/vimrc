@@ -36,6 +36,8 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " 파이썬 전용 syntax highlight
 
+Plug 'rust-lang/rust.vim'
+
 
 " 보류
 " Plug 'tpope/vim-fugitive'
@@ -110,6 +112,9 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " vim-airline-theme
 let g:airline_theme='minimalist'
+
+" save 할 때, :RustFmt 자동 실행
+let g:rustfmt_autosave = 1
 
 " --------------------------------------------------
 "  기타 프로그램 기본 설정
