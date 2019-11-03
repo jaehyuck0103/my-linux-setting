@@ -1,1 +1,1 @@
-# my_linux_setting
+# my-linux-setting
