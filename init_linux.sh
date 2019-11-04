@@ -1,4 +1,4 @@
-echo_red() { tput setaf 1; echo "$*"; tput init; }
+echo_red() { tput setaf 1; echo "$*"; tput sgr0; }
 echo_barrier() { for _ in $(seq $1); do echo -n -; done }
 echo_title() { echo ""; echo_red $(echo_barrier $((${#*}+10))); echo_red "---- $* ----"; echo_red $(echo_barrier $((${#*}+10))); }
 echo_and_run() { echo_red "\$ $*"; "$@"; }
