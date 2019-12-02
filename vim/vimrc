@@ -40,6 +40,8 @@ Plug 'rust-lang/rust.vim'
 
 Plug 'cespare/vim-toml'
 
+Plug 'psf/black'  " auto format for python
+
 
 " 보류
 " Plug 'tpope/vim-fugitive'
@@ -59,7 +61,7 @@ call plug#end()
 "  패키지 세부 설정
 " --------------------------------------------------
 " ale
-let g:ale_linters = {'python': ['flake8'], 'cpp': ['clangd']}  " clangd 설치 필요
+let g:ale_linters = {'python': ['flake8', 'pylint'], 'cpp': ['clangd']}  " clangd 설치 필요
 
 """" ncm2
 " enable ncm2 for all buffers, ncm2 기본 설정
@@ -84,6 +86,7 @@ let g:pymode_folding = 0
 let g:pymode_rope = 0
 let g:pymode_options_max_line_length = 99
 let g:pymode_python = 'python3'
+let g:pymode_lint = 0
 
 " supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"  " completion menu 위에서 아래로 스크롤하도록.
@@ -117,6 +120,11 @@ let g:airline_theme='minimalist'
 
 " save 할 때, :RustFmt 자동 실행
 let g:rustfmt_autosave = 1
+
+" Black save 할 때 자동 실행
+let g:black_linelength = 99
+let g:black_skip_string_normalization = 1
+autocmd BufWritePre *.py execute ':Black'
 
 " --------------------------------------------------
 "  기타 프로그램 기본 설정

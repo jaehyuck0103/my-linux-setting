@@ -10,4 +10,6 @@ ln -s $(realpath ./flake8/flake8) ~/.config/flake8
 
 ln -s $(realpath ./libinput-gestures/libinput-gestures.conf) ~/.config/
 
+ln -s $(realpath ./pylint/pylintrc) ~/.pylintrc
+
 cat ./bash/bashrc >> ~/.bashrc
