@@ -123,7 +123,6 @@ let g:rustfmt_autosave = 1
 
 " Black save 할 때 자동 실행
 let g:black_linelength = 99
-let g:black_skip_string_normalization = 1
 autocmd BufWritePre *.py execute ':Black'
 
 " --------------------------------------------------
