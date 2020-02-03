@@ -134,7 +134,7 @@ let g:neoformat_python_black = {
             \ }
 let g:neoformat_cpp_clangformat = {
             \ 'exe': 'clang-format',
-            \ 'args': ['-assume-filename=' . expand('%:t'), '--style="{BasedOnStyle: llvm, IndentWidth: 4}"'],
+            \ 'args': ['-assume-filename=' . expand('%:t'), '--style="{BasedOnStyle: llvm, IndentWidth: 4, ColumnLimit: 99}"'],
             \ 'stdin': 1,
             \ }
 let g:neoformat_enabled_python = ['black']
