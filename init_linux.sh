@@ -56,7 +56,7 @@ elif [ "$STEP" = "3" ]; then
     echo_title "Install Python Packages"
     echo_and_run conda update --all
     echo_and_run pip install setuptools wheel
-    echo_and_run pip install flake8 jedi pylint black
+    echo_and_run pip install flake8 jedi pylint black isort
     echo_and_run pip install numpy scipy matplotlib
     echo_and_run pip install pandas scikit-learn scikit-image
     echo_and_run pip install opencv-python tqdm albumentations

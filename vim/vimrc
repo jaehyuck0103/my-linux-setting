@@ -63,6 +63,9 @@ call plug#end()
 " --------------------------------------------------
 " ale
 let g:ale_linters = {'python': ['flake8', 'pylint'], 'cpp': ['clangd']}  " clangd 설치 필요
+let g:ale_fixers = {'python': ['isort']}
+let g:ale_fix_on_save = 1
+let g:ale_python_isort_options = '-m 3 -tc -fgw 0 -up -w 99'  " isort 0.5에서 profile로 대체할것..
 
 """" ncm2
 " enable ncm2 for all buffers, ncm2 기본 설정

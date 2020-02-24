@@ -63,7 +63,6 @@ confidence=
 disable=
     missing-docstring,
     invalid-name,
-    wrong-import-order,
     logging-format-interpolation,
     too-many-locals,
     too-few-public-methods,
