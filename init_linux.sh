@@ -65,7 +65,7 @@ elif [ "$STEP" = "3" ]; then
     # pip xarray requests bs4 seaborn xgboost imbalanced-learn
 
     echo_title "Neovim (from PPA)"   # https://github.com/neovim/neovim/wiki/Installing-Neovim
-    echo_and_run sudo add-apt-repository ppa:neovim-ppa/stable
+    echo_and_run sudo add-apt-repository ppa:neovim-ppa/unstable
     echo_and_run sudo apt-get update
     echo_and_run sudo apt-get install neovim
     echo_and_run pip install neovim

@@ -1,0 +1,5 @@
+{
+    "diagnostic.virtualText": true,
+    "python.jediEnabled": false,
+    "clangd.arguments": ["-header-insertion=never"]
+}
