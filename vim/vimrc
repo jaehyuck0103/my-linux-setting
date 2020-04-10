@@ -11,7 +11,7 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 " Make sure you use single quotes
 
-Plug 'w0rp/ale'  " Asynchronous Lint Engine
+" Plug 'w0rp/ale'  " Asynchronous Lint Engine
 
 " Plug 'roxma/nvim-yarp'  " ncm2 dependency
 " Plug 'ncm2/ncm2'   " YCM, deoplete alternative
@@ -119,6 +119,11 @@ let g:neoformat_python_black = {
             \ 'args': ['-q', '-l 99', '-'],
             \ 'stdin': 1,
             \ }
+let g:neoformat_python_isort = {
+            \ 'exe': 'isort',
+            \ 'args': ['-', '--quiet', '-m 3', '-tc', '-fgw 0', '-up', '-w 99',],
+            \ 'stdin': 1,
+            \ }  " isort 5.0에서 profile로 대체할것..
 let g:neoformat_cpp_clangformat = {
             \ 'exe': 'clang-format',
             \ 'args': ['-assume-filename=' . expand('%:t'), '--style="{BasedOnStyle: llvm, IndentWidth: 4, ColumnLimit: 99, 
@@ -126,9 +131,10 @@ let g:neoformat_cpp_clangformat = {
             \                                                          AllowAllConstructorInitializersOnNextLine: false}"'],
             \ 'stdin': 1,
             \ }
-let g:neoformat_enabled_python = ['black']
+let g:neoformat_enabled_python = ['black', 'isort']
 let g:neoformat_enabled_haskell = ['brittany']
 let g:neoformat_enabled_cpp = ['clangformat']
+let g:neoformat_run_all_formatters = 1  " python 때문에 이렇게 해놓긴 했는데, 따로 지정안한 lang에서 여러개 formatter가 깔려있는경우엔... (물론 낮은 가능성)
 
 
 
@@ -172,7 +178,7 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-set signcolumn=yes
+" set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by

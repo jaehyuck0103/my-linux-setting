@@ -72,6 +72,7 @@ disable=
     too-many-arguments,
     bad-continuation,  # conflict with black
     no-self-use,  # think later....
+    not-callable,  # torch.tensor is not callable 때문에 정신 사나워서 일단 disable
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option

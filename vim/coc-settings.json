@@ -1,5 +1,7 @@
 {
     "diagnostic.virtualText": true,
     "python.jediEnabled": false,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintUseMinimalCheckers": false,
     "clangd.arguments": ["-header-insertion=never"]
 }
