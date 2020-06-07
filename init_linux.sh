@@ -8,6 +8,7 @@ echo_red "Step1: Essential utils, NVIDIA Driver"
 echo_red "Step2: my-linux-setting, Miniconda"
 echo_red "Step3: Python packages, Neovim, Etc..."
 echo_red "Step4: Libinput-gestures (for laptop)"
+echo_red "Step5: clangd, clang-format"
 read -p "$(echo_red "Which step?")" STEP
 
 if [ "$STEP" = "1" ]; then
@@ -86,5 +87,17 @@ elif [ "$STEP" = "4" ]; then
     echo_and_run cd -
     echo_red "Logout and Login Required"
 
+elif [ "$STEP" = "5" ]; then  # https://apt.llvm.org/
+
+    echo_title "Install clangd, clang-format"
+
+    UBUNTU_CODENAME=$(grep "UBUNTU_CODENAME=" /etc/os-release | cut -d "=" -f2)
+    echo_red "UBUNTU_CODENAME: ${UBUNTU_CODENAME}"
+
+    echo_and_run wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+    REPO_NAME="deb http://apt.llvm.org/${UBUNTU_CODENAME}/   llvm-toolchain-${UBUNTU_CODENAME}  main"
+    echo_and_run sudo add-apt-repository "${REPO_NAME}"
+    echo_and_run sudo apt update
+    echo_and_run sudo apt install clangd clang-format
 fi
 
