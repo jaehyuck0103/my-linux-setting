@@ -60,10 +60,9 @@ elif [ "$STEP" = "3" ]; then
     echo_and_run pip install flake8 jedi pylint black isort
     echo_and_run pip install numpy scipy matplotlib
     echo_and_run pip install pandas scikit-learn scikit-image
-    echo_and_run pip install opencv-python tqdm albumentations
+    echo_and_run pip install opencv-python tqdm
     echo_and_run pip install torch torchvision
-    echo_and_run pip install dynaconf
-    # pip xarray requests bs4 seaborn xgboost imbalanced-learn
+    # pip xarray requests bs4 seaborn xgboost imbalanced-learn albumentations
 
     echo_title "Neovim (from PPA)"   # https://github.com/neovim/neovim/wiki/Installing-Neovim
     echo_and_run sudo add-apt-repository ppa:neovim-ppa/unstable
@@ -77,7 +76,7 @@ elif [ "$STEP" = "3" ]; then
 elif [ "$STEP" = "4" ]; then
 
     echo_title "Libinput-gestures (for laptop)"
-    # echo_and_run sudo gpasswd -a $USER input   # Is necessary?
+    echo_and_run sudo gpasswd -a $USER input
     echo_and_run sudo apt install xdotool wmctrl libinput-tools
     echo_and_run git clone https://github.com/bulletmark/libinput-gestures.git ~/Utils/libinput-gestures
     echo_and_run cd ~/Utils/libinput-gestures
@@ -94,9 +93,9 @@ elif [ "$STEP" = "5" ]; then  # https://apt.llvm.org/
     UBUNTU_CODENAME=$(grep "UBUNTU_CODENAME=" /etc/os-release | cut -d "=" -f2)
     echo_red "UBUNTU_CODENAME: ${UBUNTU_CODENAME}"
 
-    echo_and_run wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
     REPO_NAME="deb http://apt.llvm.org/${UBUNTU_CODENAME}/   llvm-toolchain-${UBUNTU_CODENAME}  main"
     echo_and_run sudo add-apt-repository "${REPO_NAME}"
+    echo_and_run wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -
     echo_and_run sudo apt update
     echo_and_run sudo apt install clangd clang-format
 fi
