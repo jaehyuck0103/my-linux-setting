@@ -3,5 +3,6 @@
     "python.jediEnabled": false,
     "python.linting.pylintEnabled": true,
     "python.linting.pylintUseMinimalCheckers": false,
-    "clangd.arguments": ["-header-insertion=never"]
+    "clangd.arguments": ["-header-insertion=never"],
+    "coc.preferences.rootPatterns": [".git", ".hg", ".projections.json", "pyproject.toml"]
 }
