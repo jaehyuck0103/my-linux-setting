@@ -35,6 +35,9 @@ Plug 'sbdchd/neoformat'
 
 Plug 'neovimhaskell/haskell-vim'
 
+" Auto pairs for '(' '[' '{'
+Plug 'jiangmiao/auto-pairs'
+
 
 " 보류
 " Plug 'tpope/vim-fugitive'
