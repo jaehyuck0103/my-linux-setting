@@ -23,12 +23,15 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'prabirshrestha/vim-lsp'    " ncm2에 lsp 사용할 수 있도록
 " Plug 'ncm2/ncm2-vim-lsp'         " ncm2에 lsp 사용할 수 있도록
 
+" Better Syntax Support
+Plug 'sheerun/vim-polyglot'
+
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'Jae-Hyuck/hicursorwords'
 Plug 'Yggdroot/indentLine'
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
+"Plug 'python-mode/python-mode', { 'branch': 'develop' }
 " Plug 'ervandew/supertab'  " 자동완성을 tab으로 할 수 있도록, 아랫쪽에 추가한 coc 기본설정과 중복되어 제거
 " Plug 'flazz/vim-colorschemes'
 Plug 'NLKNguyen/papercolor-theme'
@@ -78,6 +81,10 @@ let g:pymode_lint = 0
 
 " supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"  " completion menu 위에서 아래로 스크롤하도록.
+
+" vim-polyglot
+""" python
+let g:python_highlight_all = 1
 
 " vim-colorschemes
 set background=dark
