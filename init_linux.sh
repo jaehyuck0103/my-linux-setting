@@ -47,7 +47,7 @@ elif [ "$STEP" = "2" ]; then
     echo_and_run cd -
 
     echo_title "Miniconda"
-    echo_and_run wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    echo_and_run wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     echo_and_run bash Miniconda3-latest-Linux-x86_64.sh
     echo_and_run rm Miniconda3-latest-Linux-x86_64.sh
     echo_red "Reopen Terminal Required"
@@ -60,9 +60,9 @@ elif [ "$STEP" = "3" ]; then
     echo_and_run pip install flake8 jedi pylint black isort
     echo_and_run pip install numpy scipy matplotlib
     echo_and_run pip install pandas scikit-learn scikit-image
-    echo_and_run pip install opencv-python tqdm
+    echo_and_run pip install opencv-python
     echo_and_run pip install torch torchvision
-    # pip xarray requests bs4 seaborn xgboost imbalanced-learn albumentations
+    # pip xarray requests bs4 seaborn xgboost imbalanced-learn albumentations tqdm
 
     echo_title "Neovim (from PPA)"   # https://github.com/neovim/neovim/wiki/Installing-Neovim
     echo_and_run sudo add-apt-repository ppa:neovim-ppa/unstable
@@ -95,7 +95,7 @@ elif [ "$STEP" = "5" ]; then  # https://apt.llvm.org/
 
     REPO_NAME="deb http://apt.llvm.org/${UBUNTU_CODENAME}/   llvm-toolchain-${UBUNTU_CODENAME}  main"
     echo_and_run sudo add-apt-repository "${REPO_NAME}"
-    echo_and_run wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -
+    wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -  # echo_and_run 붙이면 안되서 제외.
     echo_and_run sudo apt update
     echo_and_run sudo apt install clangd clang-format
 fi
