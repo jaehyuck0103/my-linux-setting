@@ -9,19 +9,6 @@ endif
 
 " Specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
-" Make sure you use single quotes
-
-" Plug 'w0rp/ale'  " Asynchronous Lint Engine
-
-" Plug 'roxma/nvim-yarp'  " ncm2 dependency
-" Plug 'ncm2/ncm2'   " YCM, deoplete alternative
-" Plug 'ncm2/ncm2-bufword'
-" Plug 'ncm2/ncm2-path'
-" Plug 'ncm2/ncm2-jedi'  " ncm2의 python용 completion source
-
-" Plug 'prabirshrestha/async.vim'  " ncm2에 lsp 사용할 수 있도록
-" Plug 'prabirshrestha/vim-lsp'    " ncm2에 lsp 사용할 수 있도록
-" Plug 'ncm2/ncm2-vim-lsp'         " ncm2에 lsp 사용할 수 있도록
 
 " Better Syntax Support
 Plug 'sheerun/vim-polyglot'
@@ -31,7 +18,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'Jae-Hyuck/hicursorwords'
 Plug 'Yggdroot/indentLine'
-"Plug 'python-mode/python-mode', { 'branch': 'develop' }
 " Plug 'ervandew/supertab'  " 자동완성을 tab으로 할 수 있도록, 아랫쪽에 추가한 coc 기본설정과 중복되어 제거
 " Plug 'flazz/vim-colorschemes'
 Plug 'NLKNguyen/papercolor-theme'
@@ -66,19 +52,6 @@ call plug#end()
 " --------------------------------------------------
 "  패키지 세부 설정
 " --------------------------------------------------
-" ale
-let g:ale_linters = {'python': ['pylint'], 'cpp': []}
-let g:ale_fixers = {'python': ['isort']}
-let g:ale_fix_on_save = 1
-let g:ale_python_isort_options = '-m 3 -tc -fgw 0 -up -w 99'  " isort 5.0에서 profile로 대체할것..
-
-" python-mode
-let g:pymode_folding = 0
-let g:pymode_rope = 0
-let g:pymode_options_max_line_length = 99
-let g:pymode_python = 'python3'
-let g:pymode_lint = 0
-
 " supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"  " completion menu 위에서 아래로 스크롤하도록.
 
