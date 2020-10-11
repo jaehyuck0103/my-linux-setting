@@ -9,6 +9,7 @@ echo_red "Step2: my-linux-setting, Miniconda"
 echo_red "Step3: Python packages, Neovim, Etc..."
 echo_red "Step4: Libinput-gestures (for laptop)"
 echo_red "Step5: clangd, clang-format"
+echo_red "Step6: node"
 read -p "$(echo_red "Which step?")" STEP
 
 if [ "$STEP" = "1" ]; then
@@ -98,5 +99,10 @@ elif [ "$STEP" = "5" ]; then  # https://apt.llvm.org/
     wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -  # echo_and_run 붙이면 안되서 제외.
     echo_and_run sudo apt update
     echo_and_run sudo apt install clangd clang-format
+
+elif [ "$STEP" = "6" ]; then  # https://github.com/nodesource/distributions/blob/master/README.md
+    echo_title "Install node"
+    curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+    echo_and_run sudo apt-get install -y nodejs
 fi
 
