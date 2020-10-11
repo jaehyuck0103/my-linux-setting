@@ -1,5 +1,6 @@
 {
     "diagnostic.virtualText": true,
+    "diagnostic.virtualTextCurrentLineOnly": false,
     "python.jediEnabled": false,
     "python.linting.pylintEnabled": true,
     "python.linting.pylintUseMinimalCheckers": false,
