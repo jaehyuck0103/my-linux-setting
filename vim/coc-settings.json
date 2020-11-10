@@ -5,5 +5,6 @@
     "python.linting.pylintEnabled": true,
     "python.linting.pylintUseMinimalCheckers": false,
     "clangd.arguments": ["-header-insertion=never"],
+    "clangd.fallbackFlags": ["-std=c++17"],
     "coc.preferences.rootPatterns": [".git", ".hg", ".projections.json", "pyproject.toml"]
 }
