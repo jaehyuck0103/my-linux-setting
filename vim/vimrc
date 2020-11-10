@@ -97,6 +97,7 @@ let g:rustfmt_autosave = 1
 " run on save
 autocmd BufWritePre * execute ':Neoformat'
 " each languages
+let g:shfmt_opt="-ci"
 let g:neoformat_python_black = {
             \ 'exe': 'black',
             \ 'args': ['-q', '-l 99', '-'],

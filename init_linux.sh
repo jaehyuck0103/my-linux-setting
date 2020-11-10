@@ -1,8 +1,19 @@
-echo_red() { tput setaf 1; echo "$*"; tput sgr0; }
-echo_barrier() { for _ in $(seq $1); do echo -n -; done }
-echo_title() { echo ""; echo_red $(echo_barrier $((${#*}+10))); echo_red "---- $* ----"; echo_red $(echo_barrier $((${#*}+10))); }
-echo_and_run() { echo_red "\$ $*"; "$@"; }
-
+echo_red() {
+    tput setaf 1
+    echo "$*"
+    tput sgr0
+}
+echo_barrier() { for _ in $(seq $1); do echo -n -; done; }
+echo_title() {
+    echo ""
+    echo_red $(echo_barrier $((${#*} + 10)))
+    echo_red "---- $* ----"
+    echo_red $(echo_barrier $((${#*} + 10)))
+}
+echo_and_run() {
+    echo_red "\$ $*"
+    "$@"
+}
 
 echo_red "Step1: Essential utils, NVIDIA Driver"
 echo_red "Step2: my-linux-setting, Miniconda"
@@ -63,9 +74,10 @@ elif [ "$STEP" = "3" ]; then
     echo_and_run pip install pandas scikit-learn scikit-image
     echo_and_run pip install opencv-python
     echo_and_run pip install torch torchvision
+    echo_and_run pip install cmakelang
     # pip xarray requests bs4 seaborn xgboost imbalanced-learn albumentations tqdm
 
-    echo_title "Neovim (from PPA)"   # https://github.com/neovim/neovim/wiki/Installing-Neovim
+    echo_title "Neovim (from PPA)" # https://github.com/neovim/neovim/wiki/Installing-Neovim
     echo_and_run sudo add-apt-repository ppa:neovim-ppa/unstable
     echo_and_run sudo apt-get update
     echo_and_run sudo apt-get install neovim
@@ -87,7 +99,7 @@ elif [ "$STEP" = "4" ]; then
     echo_and_run cd -
     echo_red "Logout and Login Required"
 
-elif [ "$STEP" = "5" ]; then  # https://apt.llvm.org/
+elif [ "$STEP" = "5" ]; then # https://apt.llvm.org/
 
     echo_title "Install clangd, clang-format"
 
@@ -96,13 +108,12 @@ elif [ "$STEP" = "5" ]; then  # https://apt.llvm.org/
 
     REPO_NAME="deb http://apt.llvm.org/${UBUNTU_CODENAME}/   llvm-toolchain-${UBUNTU_CODENAME}  main"
     echo_and_run sudo add-apt-repository "${REPO_NAME}"
-    wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -  # echo_and_run 붙이면 안되서 제외.
+    wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add - # echo_and_run 붙이면 안되서 제외.
     echo_and_run sudo apt update
     echo_and_run sudo apt install clangd clang-format
 
-elif [ "$STEP" = "6" ]; then  # https://github.com/nodesource/distributions/blob/master/README.md
+elif [ "$STEP" = "6" ]; then # https://github.com/nodesource/distributions/blob/master/README.md
     echo_title "Install node"
     curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
     echo_and_run sudo apt-get install -y nodejs
 fi
-
