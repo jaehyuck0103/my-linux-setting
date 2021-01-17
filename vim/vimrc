@@ -113,6 +113,8 @@ let g:neoformat_cpp_clangformat = {
             \ 'args': ['-assume-filename=' . expand('%:t'), '--style="{BasedOnStyle: llvm, IndentWidth: 4, ColumnLimit: 99, 
             \                                                          ConstructorInitializerAllOnOneLineOrOnePerLine: true, 
             \                                                          AllowAllConstructorInitializersOnNextLine: false,
+            \                                                          AllowAllArgumentsOnNextLine: false,
+            \                                                          AllowAllParametersOfDeclarationOnNextLine: false,
             \                                                          BinPackArguments: false, BinPackParameters: false,
             \                                                          AlignAfterOpenBracket: AlwaysBreak,
             \                                                          AllowAllParametersOfDeclarationOnNextLine: false}"'],
