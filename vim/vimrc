@@ -36,7 +36,7 @@ Plug 'sbdchd/neoformat'
 Plug 'neovimhaskell/haskell-vim'
 
 " Auto pairs for '(' '[' '{'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 
 
 " 보류
