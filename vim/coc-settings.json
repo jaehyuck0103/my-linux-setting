@@ -1,10 +1,13 @@
 {
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextCurrentLineOnly": false,
-    "python.jediEnabled": false,
-    "python.linting.pylintEnabled": true,
-    "python.linting.pylintUseMinimalCheckers": false,
     "clangd.arguments": ["-header-insertion=never"],
     "clangd.fallbackFlags": ["-std=c++17"],
-    "coc.preferences.rootPatterns": [".git", ".hg", ".projections.json", "pyproject.toml"]
+    "coc.preferences.rootPatterns": [".git", ".hg", ".projections.json", "pyproject.toml"],
+
+    "python.analysis.autoImportCompletions": false,
+    "python.analysis.autoSearchPaths": false,
+    "python.analysis.diagnosticSeverityOverrides": {"reportGeneralTypeIssues": "none"},
+    "python.linting.pylintEnabled": true,
+    "python.formatting.provider": "none"
 }
