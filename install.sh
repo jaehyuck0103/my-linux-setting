@@ -11,4 +11,6 @@ ln -s $(realpath ./libinput-gestures/libinput-gestures.conf) ~/.config/
 
 ln -s $(realpath ./pylint/pylintrc) ~/.pylintrc
 
+ln -s $(realpath ./clang-format/clang-format) ~/.clang-format
+
 cat ./bash/bashrc >> ~/.bashrc
