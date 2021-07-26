@@ -2,8 +2,8 @@ mkdir -p ~/.config/nvim
 ln -s $(realpath ./vim/vimrc) ~/.config/nvim/init.vim
 ln -s $(realpath ./vim/coc-settings.json) ~/.config/nvim/
 
-mkdir -p ~/.pip
-ln -s $(realpath ./pip/pip.conf) ~/.pip/
+# mkdir -p ~/.pip
+# ln -s $(realpath ./pip/pip.conf) ~/.pip/
 
 ln -s $(realpath ./tmux/tmux.conf) ~/.tmux.conf
 

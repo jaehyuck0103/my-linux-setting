@@ -16,11 +16,14 @@ echo_and_run() {
 }
 
 echo_red "Step1: Essential utils, NVIDIA Driver"
-echo_red "Step2: my-linux-setting, Miniconda"
-echo_red "Step3: Python packages, Neovim, Etc..."
-echo_red "Step4: Libinput-gestures (for laptop)"
-echo_red "Step5: clangd, clang-format"
-echo_red "Step6: node"
+echo_red "Step2: my-linux-setting"
+echo_red "Step3: Install Python3.9"
+echo_red "Step4: Install Python Packages"
+echo_red "Step5: Neovim"
+echo_red "Step6: Dropbox"
+echo_red "Step7: Libinput-gestures (for laptop)"
+echo_red "Step8: clangd, clang-format"
+echo_red "Step9: node"
 read -p "$(echo_red "Which step?")" STEP
 
 if [ "$STEP" = "1" ]; then
@@ -58,24 +61,26 @@ elif [ "$STEP" = "2" ]; then
     echo_and_run sh install.sh
     echo_and_run cd -
 
-    echo_title "Miniconda"
-    echo_and_run wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    echo_and_run bash Miniconda3-latest-Linux-x86_64.sh
-    echo_and_run rm Miniconda3-latest-Linux-x86_64.sh
-    echo_red "Reopen Terminal Required"
-
 elif [ "$STEP" = "3" ]; then
 
-    echo_title "Install Python Packages"
-    echo_and_run conda update --all
+    echo_title "Install Python3.9"
+    echo_and_run sudo apt install python3.9 python3.9-venv
+    echo_and_run python3.9 -m venv ~/Utils/python_venvs/base --upgrade-deps
+    echo_red "Reopen Terminal Required"
+
+elif [ "$STEP" = "4" ]; then
+
+    echo_title "Install PythonPackages"
     echo_and_run pip install setuptools wheel
     echo_and_run pip install pylint black isort
     echo_and_run pip install numpy scipy matplotlib
     echo_and_run pip install pandas scikit-learn scikit-image
     echo_and_run pip install opencv-python
-    echo_and_run pip install torch torchvision
     echo_and_run pip install cmakelang
     # pip xarray requests bs4 seaborn xgboost imbalanced-learn albumentations tqdm
+    # torch torchvision
+
+elif [ "$STEP" = "5" ]; then
 
     echo_title "Neovim (from PPA)" # https://github.com/neovim/neovim/wiki/Installing-Neovim
     echo_and_run sudo add-apt-repository ppa:neovim-ppa/unstable
@@ -83,10 +88,12 @@ elif [ "$STEP" = "3" ]; then
     echo_and_run sudo apt-get install neovim
     echo_and_run pip install neovim
 
+elif [ "$STEP" = "6" ]; then
+
     echo_title "Dropbox"
     echo_and_run sudo apt install dropbox python3-gpg
 
-elif [ "$STEP" = "4" ]; then
+elif [ "$STEP" = "7" ]; then
 
     echo_title "Libinput-gestures (for laptop)"
     echo_and_run sudo gpasswd -a $USER input
@@ -99,7 +106,7 @@ elif [ "$STEP" = "4" ]; then
     echo_and_run cd -
     echo_red "Logout and Login Required"
 
-elif [ "$STEP" = "5" ]; then # https://apt.llvm.org/
+elif [ "$STEP" = "8" ]; then # https://apt.llvm.org/
 
     echo_title "Install clangd, clang-format"
 
@@ -112,7 +119,7 @@ elif [ "$STEP" = "5" ]; then # https://apt.llvm.org/
     echo_and_run sudo apt update
     echo_and_run sudo apt install clangd clang-format
 
-elif [ "$STEP" = "6" ]; then # https://github.com/nodesource/distributions/blob/master/README.md
+elif [ "$STEP" = "9" ]; then # https://github.com/nodesource/distributions/blob/master/README.md
     echo_title "Install node"
     curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
     echo_and_run sudo apt-get install -y nodejs
