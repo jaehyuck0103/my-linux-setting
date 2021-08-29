@@ -64,7 +64,7 @@ elif [ "$STEP" = "2" ]; then
 elif [ "$STEP" = "3" ]; then
 
     echo_title "Install Python3.9"
-    echo_and_run sudo apt install python3.9 python3.9-venv
+    echo_and_run sudo apt install python3.9-dev python3.9-venv
     echo_and_run python3.9 -m venv ~/Utils/python_venvs/base --upgrade-deps
     echo_red "Reopen Terminal Required"
 
