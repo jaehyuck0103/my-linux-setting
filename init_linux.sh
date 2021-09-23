@@ -23,7 +23,7 @@ echo_red "Step5: Neovim"
 echo_red "Step6: Dropbox"
 echo_red "Step7: Libinput-gestures (for laptop)"
 echo_red "Step8: clangd, clang-format"
-echo_red "Step9: node"
+echo_red "Step9: Install node by nvm"
 read -p "$(echo_red "Which step?")" STEP
 
 if [ "$STEP" = "1" ]; then
@@ -75,9 +75,10 @@ elif [ "$STEP" = "4" ]; then
     echo_and_run pip install pylint black isort
     echo_and_run pip install numpy scipy matplotlib
     echo_and_run pip install pandas scikit-learn scikit-image
-    echo_and_run pip install opencv-python
+    echo_and_run pip install opencv-contrib-python
     echo_and_run pip install cmakelang
-    # pip xarray requests bs4 seaborn xgboost imbalanced-learn albumentations tqdm
+    echo_and_run pip install albumentations tensorboard typer python-box
+    # pip xarray requests bs4 seaborn xgboost imbalanced-learn tqdm
     # torch torchvision
 
 elif [ "$STEP" = "5" ]; then
@@ -119,8 +120,12 @@ elif [ "$STEP" = "8" ]; then # https://apt.llvm.org/
     echo_and_run sudo apt update
     echo_and_run sudo apt install clangd clang-format
 
-elif [ "$STEP" = "9" ]; then # https://github.com/nodesource/distributions/blob/master/README.md
-    echo_title "Install node"
-    curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-    echo_and_run sudo apt-get install -y nodejs
+elif [ "$STEP" = "9" ]; then
+    echo_title "Install node by nvm"
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    echo_and_run nvm install --lts
+
 fi
