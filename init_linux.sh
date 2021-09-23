@@ -24,6 +24,7 @@ echo_red "Step6: Dropbox"
 echo_red "Step7: Libinput-gestures (for laptop)"
 echo_red "Step8: clangd, clang-format"
 echo_red "Step9: Install node by nvm"
+echo_red "Step10: Install OpenCV"
 read -p "$(echo_red "Which step?")" STEP
 
 if [ "$STEP" = "1" ]; then
@@ -127,5 +128,21 @@ elif [ "$STEP" = "9" ]; then
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
     echo_and_run nvm install --lts
+
+elif [ "$STEP" = "10" ]; then
+    echo_title "Install OpenCV"
+    echo_and_run sudo apt install libgtk-3-dev
+    echo_and_run mkdir -p ~/Utils/opencv
+    echo_and_run cd ~/Utils/opencv
+
+    echo_and_run wget -O opencv.zip https://github.com/opencv/opencv/archive/master.zip
+    echo_and_run wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/master.zip
+    echo_and_run unzip opencv.zip
+    echo_and_run unzip opencv_contrib.zip
+    echo_and_run mkdir -p build && cd build
+
+    echo_and_run cmake -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-master/modules ../opencv-master
+    echo_and_run make -j`nproc`
+    echo_and_run sudo make install
 
 fi
