@@ -140,6 +140,7 @@ let g:haskell_backpack = 1                " to enable highlighting of backpack k
 " coc-vim
 source ~/.config/nvim/plug-config/coc.vim
 source ~/.config/nvim/plug-config/coc-extensions.vim
+nmap <silent> gs :CocCommand clangd.switchSourceHeader<CR>
 
 
 " --------------------------------------------------
