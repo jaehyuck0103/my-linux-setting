@@ -1,6 +1,4 @@
-mkdir -p ~/.config/nvim
-ln -sf $(realpath ./vim/vimrc) ~/.config/nvim/init.vim
-ln -sf $(realpath ./vim/coc-settings.json) ~/.config/nvim/
+ln -sf $(realpath ./nvim) ~/.config/
 
 # mkdir -p ~/.pip
 # ln -sf $(realpath ./pip/pip.conf) ~/.pip/
