@@ -3,7 +3,7 @@
     "diagnostic.virtualTextCurrentLineOnly": false,
     "clangd.arguments": ["-header-insertion=never"],
     "clangd.fallbackFlags": ["-std=c++17"],
-    "coc.preferences.rootPatterns": [".git", ".hg", ".projections.json", "pyproject.toml"],
+    "coc.preferences.rootPatterns": [".git", ".hg", ".projections.json", "pyproject.toml", ".coc_root"],
     "coc.preferences.extensionUpdateCheck": "weekly",
 
     "python.analysis.autoImportCompletions": false,
