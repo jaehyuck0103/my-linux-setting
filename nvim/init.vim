@@ -35,6 +35,10 @@ Plug 'sbdchd/neoformat'
 
 Plug 'neovimhaskell/haskell-vim'
 
+" requires
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
 " Auto pairs for '(' '[' '{'
 " Plug 'jiangmiao/auto-pairs'
 
@@ -137,10 +141,17 @@ let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
+
+
 " coc-vim
 source ~/.config/nvim/plug-config/coc.vim
 source ~/.config/nvim/plug-config/coc-extensions.vim
 nmap <silent> gs :CocCommand clangd.switchSourceHeader<CR>
+
+
+" nvim-tree
+source ~/.config/nvim/plug-config/nvim-tree.vim
+lua require'nvim-tree'.setup()
 
 
 " --------------------------------------------------
