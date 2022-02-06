@@ -19,8 +19,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Jae-Hyuck/hicursorwords'
 Plug 'Yggdroot/indentLine'
 " Plug 'ervandew/supertab'  " 자동완성을 tab으로 할 수 있도록, 아랫쪽에 추가한 coc 기본설정과 중복되어 제거
-" Plug 'flazz/vim-colorschemes'
-Plug 'NLKNguyen/papercolor-theme'
+
+" Colorschemes
+"Plug 'NLKNguyen/papercolor-theme'
+Plug 'rebelot/kanagawa.nvim'
+"Plug 'EdenEast/nightfox.nvim'
+
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug'tpope/vim-unimpaired'   " buffer 스위칭 단축키가 잘 맵핑 되어 있음.
@@ -39,9 +44,8 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 
-" Auto pairs for '(' '[' '{'
-" Plug 'jiangmiao/auto-pairs'
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " 보류
 " Plug 'tpope/vim-fugitive'
@@ -66,24 +70,24 @@ let g:SuperTabDefaultCompletionType = "<c-n>"  " completion menu 위에서 아�
 """ python
 let g:python_highlight_all = 1
 
-" vim-colorschemes
-set background=dark
-" set t_Co=256    " nvim에서는 필요없음. vim에서는 기본값이 8임.
-let g:PaperColor_Theme_Options = {
-  \   'language': {
-  \     'python': {
-  \       'highlight_builtins' : 1
-  \     },
-  \     'cpp': {
-  \       'highlight_standard_library': 1
-  \     },
-  \     'c': {
-  \       'highlight_builtins' : 1
-  \     }
-  \   }
-  \ }
-colorscheme PaperColor
-" colorscheme molokai
+" PaperColor config
+"set background=dark
+"set t_Co=256    " nvim에서는 필요없음. vim에서는 기본값이 8임.
+"colorscheme PaperColor
+
+" kanagawa config (PaperColor 비슷하게 fg bg color setting)
+lua <<EOF
+-- this will affect all the hl-groups where the redefined colors are used
+local my_colors = {
+    -- use the palette color name...
+    sumiInk1 = "#1C1C1C",
+    fujiWhite = "#D0D0D0"
+}
+
+require'kanagawa'.setup({ colors = my_colors })
+vim.cmd("colorscheme kanagawa")
+EOF
+
 
 " vim-airline  " buffer list와 대응하는 넘버를 탭처럼 표시해준다.
 let g:airline#extensions#tabline#enabled = 1
@@ -152,6 +156,34 @@ nmap <silent> gs :CocCommand clangd.switchSourceHeader<CR>
 " nvim-tree
 source ~/.config/nvim/plug-config/nvim-tree.vim
 lua require'nvim-tree'.setup()
+
+" tree-sitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "maintained",
+
+  -- Install languages synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- List of parsers to ignore installing
+  ignore_install = {},
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- list of language that will be disabled
+    disable = {},
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = true,
+  },
+}
+EOF
 
 
 " --------------------------------------------------
