@@ -81,7 +81,8 @@ lua <<EOF
 local my_colors = {
     -- use the palette color name...
     sumiInk1 = "#1C1C1C",
-    fujiWhite = "#D0D0D0"
+    fujiWhite = "#D0D0D0",
+    carpYellow = "#D0D0D0"
 }
 
 require'kanagawa'.setup({ colors = my_colors })
