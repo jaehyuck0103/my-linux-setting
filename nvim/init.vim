@@ -156,7 +156,6 @@ nmap <silent> gs :CocCommand clangd.switchSourceHeader<CR>
 
 " nvim-tree
 source ~/.config/nvim/plug-config/nvim-tree.vim
-lua require'nvim-tree'.setup()
 
 " tree-sitter
 lua <<EOF
