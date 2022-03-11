@@ -64,9 +64,11 @@ elif [ "$STEP" = "2" ]; then
 
 elif [ "$STEP" = "3" ]; then
 
-    echo_title "Install Python3.9"
-    echo_and_run sudo apt install python3.9-dev python3.9-venv
-    echo_and_run python3.9 -m venv ~/Utils/python_venvs/base --upgrade-deps
+    echo_title "Install Python3.10"
+    echo_and_run sudo add-apt-repository ppa:deadsnakes/ppa
+    echo_and_run sudo apt update
+    echo_and_run sudo apt install python3.10-dev python3.10-venv
+    echo_and_run python3.10 -m venv ~/Utils/python_venvs/base --upgrade-deps
     echo_red "Reopen Terminal Required"
 
 elif [ "$STEP" = "4" ]; then
@@ -88,7 +90,7 @@ elif [ "$STEP" = "5" ]; then
     echo_and_run sudo add-apt-repository ppa:neovim-ppa/unstable
     echo_and_run sudo apt-get update
     echo_and_run sudo apt-get install neovim
-    echo_and_run pip install neovim
+    echo_and_run pip install pynvim
 
 elif [ "$STEP" = "6" ]; then
 
