@@ -7,6 +7,7 @@ ln -sf $(realpath ./tmux/tmux.conf) ~/.tmux.conf
 
 ln -sf $(realpath ./libinput-gestures/libinput-gestures.conf) ~/.config/
 
+mkdir -p ~/Projects
 ln -sf $(realpath ./pylint/pylintrc) ~/.pylintrc
 ln -sf $(realpath ./pylint/pylintrc) ~/Projects/.pylintrc
 ln -sf $(realpath ./clang-format/clang-format) ~/.clang-format
