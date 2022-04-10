@@ -20,3 +20,15 @@ source ~/Utils/python_venvs/base/bin/activate
 # alias
 alias vim='nvim'
 alias tmux='tmux -2'
+
+# Auto Pull my-linux-setting
+GIT_CMD="git -C ${HOME}/Utils/my-linux-setting"
+$GIT_CMD fetch
+if [ $($GIT_CMD rev-parse HEAD) != $($GIT_CMD rev-parse @{u}) ]; then
+    echo ""
+    echo "New my-linux-setting detected."
+    read -p "Pull new setting? (y/n)? " CONT
+    if [ $CONT == "y" ]; then
+        $GIT_CMD pull
+    fi
+fi
