@@ -81,7 +81,7 @@ source ~/.config/nvim/plug-config/coc-extensions.vim
 nmap <silent> gs :CocCommand clangd.switchSourceHeader<CR>
 
 " nvim-tree
-source ~/.config/nvim/plug-config/nvim-tree.vim
+luafile ~/.config/nvim/lua-config/nvim-tree.lua
 
 " tree-sitter
 luafile ~/.config/nvim/lua-config/treesitter.lua
