@@ -35,10 +35,13 @@ if [ "$STEP" = "1" ]; then
     echo_title "Essential Utils"
     echo_and_run sudo apt install build-essential git openssh-server tmux
 
-    echo_title "Google Chrome"
-    echo_and_run wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    echo_and_run sudo apt install ./google-chrome-stable_current_amd64.deb
-    echo_and_run rm ./google-chrome-stable_current_amd64.deb
+    read -p "$(echo_red "Install Google Chrome (y/n)?")" CONT
+    if [ "$CONT" = "y" ]; then
+        echo_title "Google Chrome"
+        echo_and_run wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        echo_and_run sudo apt install ./google-chrome-stable_current_amd64.deb
+        echo_and_run rm ./google-chrome-stable_current_amd64.deb
+    fi
 
     read -p "$(echo_red "Install Nvidia Driver (y/n)?")" CONT
     if [ "$CONT" = "y" ]; then
@@ -74,12 +77,10 @@ elif [ "$STEP" = "4" ]; then
 
     echo_title "Install PythonPackages"
     echo_and_run pip install setuptools wheel
-    echo_and_run pip install pylint black isort
+    echo_and_run pip install pylint black isort cmakelang
     echo_and_run pip install numpy scipy matplotlib
     echo_and_run pip install pandas scikit-learn scikit-image
-    echo_and_run pip install opencv-contrib-python
-    echo_and_run pip install cmakelang
-    echo_and_run pip install albumentations tensorboard typer python-box
+    echo_and_run pip install opencv-contrib-python albumentations tensorboard typer python-box
     # pip xarray requests bs4 seaborn xgboost imbalanced-learn tqdm
     # torch torchvision
 
