@@ -5,6 +5,7 @@
     "clangd.fallbackFlags": ["-std=c++17"],
     "coc.preferences.rootPatterns": [".git", ".hg", ".projections.json", "pyproject.toml", ".coc_root"],
     "coc.preferences.extensionUpdateCheck": "weekly",
+    "suggest.noselect": true,
 
     "python.analysis.autoImportCompletions": false,
     "python.analysis.autoSearchPaths": false,
