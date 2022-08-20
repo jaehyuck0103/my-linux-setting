@@ -17,14 +17,13 @@ echo_and_run() {
 
 echo_red "Step1: Essential utils, NVIDIA Driver"
 echo_red "Step2: my-linux-setting"
-echo_red "Step3: Install Python3.9"
+echo_red "Step3: Install Python"
 echo_red "Step4: Install Python Packages"
 echo_red "Step5: Neovim"
 echo_red "Step6: Dropbox"
-echo_red "Step7: Libinput-gestures (for laptop)"
-echo_red "Step8: clangd, clang-format"
-echo_red "Step9: Install node by nvm"
-echo_red "Step10: Install OpenCV"
+echo_red "Step7: clangd, clang-format"
+echo_red "Step8: Install node by nvm"
+echo_red "Step9: Install OpenCV"
 read -p "$(echo_red "Which step?")" STEP
 
 if [ "$STEP" = "1" ]; then
@@ -97,20 +96,7 @@ elif [ "$STEP" = "6" ]; then
     echo_title "Dropbox"
     echo_and_run sudo apt install dropbox python3-gpg
 
-elif [ "$STEP" = "7" ]; then
-
-    echo_title "Libinput-gestures (for laptop)"
-    echo_and_run sudo gpasswd -a $USER input
-    echo_and_run sudo apt install xdotool wmctrl libinput-tools
-    echo_and_run git clone https://github.com/bulletmark/libinput-gestures.git ~/Utils/libinput-gestures
-    echo_and_run cd ~/Utils/libinput-gestures
-    echo_and_run sudo make install
-    echo_and_run libinput-gestures-setup autostart
-    # echo_and_run libinput-gestures-setup start   # Is necessary?
-    echo_and_run cd -
-    echo_red "Logout and Login Required"
-
-elif [ "$STEP" = "8" ]; then # https://apt.llvm.org/
+elif [ "$STEP" = "7" ]; then # https://apt.llvm.org/
 
     echo_title "Install clangd, clang-format"
 
@@ -123,7 +109,7 @@ elif [ "$STEP" = "8" ]; then # https://apt.llvm.org/
     echo_and_run sudo apt update
     echo_and_run sudo apt install clangd clang-format
 
-elif [ "$STEP" = "9" ]; then
+elif [ "$STEP" = "8" ]; then
     echo_title "Install node by nvm"
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 
@@ -131,7 +117,7 @@ elif [ "$STEP" = "9" ]; then
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
     echo_and_run nvm install --lts
 
-elif [ "$STEP" = "10" ]; then
+elif [ "$STEP" = "9" ]; then
     echo_title "Install OpenCV"
     echo_and_run sudo apt install libgtk-3-dev
     echo_and_run mkdir -p ~/Utils/opencv
