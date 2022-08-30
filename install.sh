@@ -5,7 +5,7 @@ ln -sf $(realpath ./nvim) ~/.config/
 
 ln -sf $(realpath ./tmux/tmux.conf) ~/.tmux.conf
 
-ln -sf $(realpath ./libinput-gestures/libinput-gestures.conf) ~/.config/
+# ln -sf $(realpath ./libinput-gestures/libinput-gestures.conf) ~/.config/
 
 mkdir -p ~/Projects
 ln -sf $(realpath ./pylint/pylintrc) ~/.pylintrc
