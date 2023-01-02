@@ -76,11 +76,11 @@ elif [ "$STEP" = "3" ]; then
 elif [ "$STEP" = "4" ]; then
 
     echo_title "Install PythonPackages"
-    echo_and_run pip install setuptools wheel
-    echo_and_run pip install pylint black isort cmakelang
-    echo_and_run pip install numpy scipy matplotlib
-    echo_and_run pip install pandas scikit-learn scikit-image
-    echo_and_run pip install opencv-contrib-python albumentations tensorboard typer python-box
+    echo_and_run pip install pip setuptools wheel --upgrade
+    echo_and_run pip install pylint black isort cmakelang --upgrade
+    echo_and_run pip install numpy scipy matplotlib --upgrade
+    echo_and_run pip install pandas scikit-learn scikit-image --upgrade
+    echo_and_run pip install opencv-contrib-python albumentations tensorboard typer python-box --upgrade
     # pip xarray requests bs4 seaborn xgboost imbalanced-learn tqdm
     # torch torchvision
 
