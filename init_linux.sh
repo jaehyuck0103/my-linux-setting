@@ -24,6 +24,7 @@ echo_red "Step6: Dropbox"
 echo_red "Step7: clangd, clang-format"
 echo_red "Step8: Install node by nvm"
 echo_red "Step9: Install OpenCV"
+echo_red "Step10: Install Syncthing"
 read -p "$(echo_red "Which step?")" STEP
 
 if [ "$STEP" = "1" ]; then
@@ -136,4 +137,17 @@ elif [ "$STEP" = "9" ]; then
     echo_and_run make -j`nproc`
     echo_and_run sudo make install
 
+elif [ "$STEP" = "10" ]; then
+    echo_title "Install Syncthing"
+    # Add the release PGP keys:
+    sudo curl -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+    # Add the "stable" channel to your APT sources:
+    echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
+    # Update and install syncthing:
+    sudo apt-get update
+    sudo apt-get install syncthing
+
+    # Starting Syncthing Automatically
+    systemctl enable "syncthing@${USER}.service"
+    systemctl start "syncthing@${USER}.service"
 fi
