@@ -86,11 +86,13 @@ elif [ "$STEP" = "4" ]; then
 
 elif [ "$STEP" = "5" ]; then
 
-    echo_title "Neovim (from PPA)" # https://github.com/neovim/neovim/wiki/Installing-Neovim
-    echo_and_run sudo add-apt-repository ppa:neovim-ppa/stable
-    echo_and_run sudo apt-get update
-    echo_and_run sudo apt-get install neovim
-    echo_and_run pip install pynvim
+    echo_title "Neovim (stable ver, appimage, by Zap)"
+
+    echo_and_run sudo apt update
+    echo_and_run sudo apt install jq
+    curl https://raw.githubusercontent.com/srevinsaju/zap/main/install.sh | bash -s
+
+    echo_and_run zap install neovim
 
 elif [ "$STEP" = "6" ]; then
 
