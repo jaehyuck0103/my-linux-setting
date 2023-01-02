@@ -1,3 +1,4 @@
+mkdir -p ~/.config
 ln -sf $(realpath ./nvim) ~/.config/
 
 # mkdir -p ~/.pip
