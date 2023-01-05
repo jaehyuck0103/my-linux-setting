@@ -37,6 +37,8 @@ Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+Plug 'lambdalisue/suda.vim'
+
 " 보류
 " Plug 'tpope/vim-fugitive'
 " Plug 'Shougo/deol.nvim'
