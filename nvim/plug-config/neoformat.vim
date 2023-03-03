@@ -30,3 +30,10 @@ let g:neoformat_enabled_python = ['black', 'isort']
 let g:neoformat_enabled_haskell = ['brittany']
 let g:neoformat_enabled_cpp = ['clangformat']
 let g:neoformat_run_all_formatters = 1  " python 때문에 이렇게 해놓긴 했는데, 따로 지정안한 lang에서 여러개 formatter가 깔려있는경우엔... (물론 낮은 가능성)
+
+let g:neoformat_cuda_clangformat = {
+            \ 'exe': 'clang-format',
+            \ 'args': ['-assume-filename=' . expand('"%:t"')],
+            \ 'stdin': 1,
+            \ }
+let g:neoformat_enabled_cuda = ['clangformat']
