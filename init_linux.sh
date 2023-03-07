@@ -34,7 +34,7 @@ if [ "$STEP" = "1" ]; then
     echo_and_run sudo apt upgrade
 
     echo_title "Essential Utils"
-    echo_and_run sudo apt install build-essential git openssh-server tmux
+    echo_and_run sudo apt install build-essential git openssh-server tmux cmake
 
     read -p "$(echo_red "Install Google Chrome (y/n)?")" CONT
     if [ "$CONT" = "y" ]; then
@@ -77,7 +77,7 @@ elif [ "$STEP" = "3" ]; then
 elif [ "$STEP" = "4" ]; then
 
     echo_title "Install PythonPackages"
-    echo_and_run pip install pip setuptools wheel --upgrade
+    echo_and_run pip install pip setuptools wheel cmake --upgrade
     echo_and_run pip install pylint black isort cmakelang --upgrade
     echo_and_run pip install numpy scipy matplotlib --upgrade
     echo_and_run pip install pandas scikit-learn scikit-image --upgrade
