@@ -39,6 +39,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'lambdalisue/suda.vim'
 
+Plug 'mattn/webapi-vim'
+Plug 'mattn/vim-gist'
+
 " 보류
 " Plug 'tpope/vim-fugitive'
 " Plug 'Shougo/deol.nvim'
@@ -87,6 +90,10 @@ luafile ~/.config/nvim/lua-config/nvim-tree.lua
 
 " tree-sitter
 luafile ~/.config/nvim/lua-config/treesitter.lua
+
+" vim-gist
+let g:gist_post_private = 1  " private post as default.
+let g:gist_show_privates = 1  " Show private gists with ":Gist -l":
 
 " --------------------------------------------------
 "  기타 프로그램 기본 설정
