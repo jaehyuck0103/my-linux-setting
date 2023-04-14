@@ -82,6 +82,7 @@ elif [ "$STEP" = "4" ]; then
     echo_and_run pip install numpy scipy matplotlib --upgrade
     echo_and_run pip install pandas scikit-learn scikit-image --upgrade
     echo_and_run pip install opencv-contrib-python albumentations tensorboard typer python-box --upgrade
+    echo_and_run pip install pynvim --upgrade
     # pip xarray requests bs4 seaborn xgboost imbalanced-learn tqdm
     # torch torchvision
 
@@ -94,6 +95,8 @@ elif [ "$STEP" = "5" ]; then
     curl https://raw.githubusercontent.com/srevinsaju/zap/main/install.sh | bash -s
 
     echo_and_run zap install neovim
+
+    echo_and_run pip install pynvim --upgrade
 
 elif [ "$STEP" = "6" ]; then
 
