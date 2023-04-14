@@ -11,6 +11,9 @@ vim.cmd("set termguicolors") -- this variable must be enabled for colors to be a
 require("nvim-tree").setup({
 	create_in_closed_folder = false,
 	respect_buf_cwd = true,
+	git = {
+		ignore = false, -- Not ignore files on .gitignore
+	},
 	renderer = {
 		add_trailing = true,
 		group_empty = true,
@@ -36,19 +39,18 @@ require("nvim-tree").setup({
 })
 
 local function open_nvim_tree(data)
+	-- buffer is a directory
+	local directory = vim.fn.isdirectory(data.file) == 1
 
-  -- buffer is a directory
-  local directory = vim.fn.isdirectory(data.file) == 1
+	if not directory then
+		return
+	end
 
-  if not directory then
-    return
-  end
+	-- change to the directory
+	vim.cmd.cd(data.file)
 
-  -- change to the directory
-  vim.cmd.cd(data.file)
-
-  -- open the tree
-  require("nvim-tree.api").tree.open()
+	-- open the tree
+	require("nvim-tree.api").tree.open()
 end
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
