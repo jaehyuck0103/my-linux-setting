@@ -21,6 +21,9 @@ source ~/Utils/python_venvs/base/bin/activate
 alias vim='neovim'
 alias tmux='tmux -2'
 
+# bash vi mode
+set -o vi
+
 # Auto Pull my-linux-setting
 GIT_CMD="git -C ${HOME}/Utils/my-linux-setting"
 $GIT_CMD fetch
