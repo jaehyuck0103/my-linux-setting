@@ -16,12 +16,11 @@ Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'jaehyuck0103/hicursorwords'
-Plug 'Yggdroot/indentLine'
 " Plug 'ervandew/supertab'  " 자동완성을 tab으로 할 수 있도록, 아랫쪽에 추가한 coc 기본설정과 중복되어 제거
 
-" Colorschemes
 Plug 'rebelot/kanagawa.nvim'
-"Plug 'EdenEast/nightfox.nvim'
+
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -66,6 +65,9 @@ let g:python_highlight_all = 1
 
 " kanagawa
 luafile ~/.config/nvim/lua-config/kanagawa.lua
+
+" indent-blankline
+luafile ~/.config/nvim/lua-config/indent-blankline.lua
 
 " vim-airline
 source ~/.config/nvim/plug-config/vim-airline.vim
