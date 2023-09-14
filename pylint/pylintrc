@@ -111,6 +111,7 @@ disable=
     pointless-string-statement,
     consider-using-sys-exit,
     logging-fstring-interpolation,
+    use-dict-literal,
 
 
 [REPORTS]
