@@ -1,0 +1,12 @@
+# jail.conf: Defulat Setting File (User should not modify it.)
+# jail.local: It overrides jail.conf.
+
+[DEFAULT]
+bantime = 10m
+findtime = 10m
+maxretry = 5
+
+backend = systemd
+
+[sshd]
+enabled = true
