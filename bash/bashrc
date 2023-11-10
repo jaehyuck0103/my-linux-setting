@@ -24,6 +24,9 @@ alias tmux='tmux -2'
 # bash vi mode
 set -o vi
 
+# To solve DDP issue.
+export NCCL_P2P_DISABLE=1
+
 # Auto Pull my-linux-setting
 GIT_CMD="git -C ${HOME}/Utils/my-linux-setting"
 $GIT_CMD fetch
