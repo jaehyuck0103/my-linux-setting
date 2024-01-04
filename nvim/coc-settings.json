@@ -11,5 +11,6 @@
     "python.analysis.autoSearchPaths": false,
     "python.analysis.diagnosticSeverityOverrides": {"reportGeneralTypeIssues": "none"},
     "python.linting.pylintEnabled": true,
+    "python.linting.ruffEnabled": true,
     "python.formatting.provider": "none"
 }
