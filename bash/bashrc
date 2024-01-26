@@ -29,7 +29,7 @@ export NCCL_P2P_DISABLE=1
 
 # Auto Pull my-linux-setting
 GIT_CMD="git -C ${HOME}/Utils/my-linux-setting"
-$GIT_CMD fetch
+timeout 10 $GIT_CMD fetch
 if [ $($GIT_CMD rev-parse HEAD) != $($GIT_CMD rev-parse @{u}) ]; then
     echo ""
     echo "New my-linux-setting detected."
