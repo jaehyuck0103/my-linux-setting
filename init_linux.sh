@@ -94,7 +94,7 @@ elif [ "$STEP" = "5" ]; then
     echo_and_run sudo apt install jq
     curl https://raw.githubusercontent.com/srevinsaju/zap/main/install.sh | bash -s
 
-    echo_and_run zap install neovim
+    echo_and_run zap install --github --from neovim/neovim
 
     echo_and_run pip install pynvim --upgrade
 
