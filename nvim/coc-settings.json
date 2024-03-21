@@ -10,7 +10,6 @@
     "python.analysis.autoImportCompletions": false,
     "python.analysis.autoSearchPaths": false,
     "python.analysis.diagnosticSeverityOverrides": {"reportGeneralTypeIssues": "none"},
-    "python.linting.pylintEnabled": false,
     "python.linting.ruffEnabled": true,
     "python.formatting.provider": "none"
 }

@@ -78,7 +78,7 @@ elif [ "$STEP" = "4" ]; then
 
     echo_title "Install PythonPackages"
     echo_and_run pip install pip setuptools wheel cmake --upgrade
-    echo_and_run pip install ruff pylint black isort cmakelang --upgrade
+    echo_and_run pip install ruff black isort cmakelang --upgrade
     echo_and_run pip install numpy scipy matplotlib --upgrade
     echo_and_run pip install pandas scikit-learn scikit-image --upgrade
     echo_and_run pip install opencv-contrib-python albumentations tensorboard typer python-box --upgrade
