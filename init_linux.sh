@@ -81,9 +81,9 @@ elif [ "$STEP" = "4" ]; then
     echo_and_run pip install ruff black isort cmakelang --upgrade
     echo_and_run pip install numpy scipy matplotlib pydantic python-box typer tensorboard --upgrade
     echo_and_run pip install pandas scikit-learn scikit-image --upgrade
-    echo_and_run pip install opencv-contrib-python albumentations --upgrade
+    echo_and_run pip install opencv-contrib-python albumentations imagecodecs --upgrade
     echo_and_run pip install pynvim --upgrade
-    echo_and_run pip install torch torchvision torchmetrics openmim --upgrade
+    echo_and_run pip install torch torchvision torchmetrics kornia openmim --upgrade
     echo_and_run mim install mmengine --upgrade
     
     # pip xarray requests bs4 seaborn xgboost imbalanced-learn tqdm
