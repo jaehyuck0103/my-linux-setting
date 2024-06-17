@@ -1,11 +1,13 @@
 {
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextCurrentLineOnly": false,
+    "workspace.rootPatterns": [".git", ".hg", ".projections.json", "pyproject.toml", ".coc_root"],
+    "coc.preferences.extensionUpdateCheck": "weekly",
+    "inlayHint.enable": false,
+    "suggest.noselect": true,
+
     "clangd.arguments": ["-header-insertion=never"],
     "clangd.fallbackFlags": ["-std=c++17"],
-    "coc.preferences.rootPatterns": [".git", ".hg", ".projections.json", "pyproject.toml", ".coc_root"],
-    "coc.preferences.extensionUpdateCheck": "weekly",
-    "suggest.noselect": true,
 
     "python.analysis.autoImportCompletions": false,
     "python.analysis.autoSearchPaths": false,
