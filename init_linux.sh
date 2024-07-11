@@ -35,6 +35,7 @@ if [ "$STEP" = "1" ]; then
 
     echo_title "Essential Utils"
     echo_and_run sudo apt install build-essential git openssh-server tmux cmake
+    echo_and_run sudo apt install libglfw3-dev libtbb-dev
 
     read -p "$(echo_red "Install Google Chrome (y/n)?")" CONT
     if [ "$CONT" = "y" ]; then
