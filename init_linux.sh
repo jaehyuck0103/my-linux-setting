@@ -115,7 +115,7 @@ elif [ "$STEP" = "7" ]; then # https://apt.llvm.org/
 
     REPO_NAME="deb http://apt.llvm.org/${UBUNTU_CODENAME}/   llvm-toolchain-${UBUNTU_CODENAME}  main"
     echo_and_run sudo add-apt-repository "${REPO_NAME}"
-    wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add - # echo_and_run 붙이면 안되서 제외.
+    wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc  # echo_and_run 붙이면 안되서 제외.
     echo_and_run sudo apt update
     echo_and_run sudo apt install clangd clang-format
 
