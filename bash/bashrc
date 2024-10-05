@@ -20,6 +20,7 @@ source ~/Utils/python_venvs/base/bin/activate
 # alias
 alias vim='neovim'
 alias tmux='tmux -2'
+alias zip0='function _zip0() { cd "$1" && zip -r -0 "../$(basename $PWD).zip" . && cd -; }; _zip0'
 
 # bash vi mode
 set -o vi
