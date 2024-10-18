@@ -14,6 +14,13 @@ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 # turbovnc
 export PATH=/opt/TurboVNC/bin:$PATH
 
+# TensorRT
+export PATH=~/Utils/TensorRT/bin:$PATH
+export LD_LIBRARY_PATH=~/Utils/TensorRT/lib:$LD_LIBRARY_PATH
+
+# Solectrix
+export PATH=~/video-app/src/release:$PATH
+
 # python activate venv
 source ~/Utils/python_venvs/base/bin/activate
 
