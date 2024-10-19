@@ -13,5 +13,6 @@
     "python.analysis.autoSearchPaths": false,
     "python.analysis.diagnosticSeverityOverrides": {"reportGeneralTypeIssues": "none"},
     "python.linting.ruffEnabled": true,
-    "python.formatting.provider": "none"
+    "python.formatting.provider": "none",
+    "python.analysis.exclude": ["**/Data*/**", "**/Logs*/**"]
 }
