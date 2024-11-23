@@ -21,6 +21,9 @@ export LD_LIBRARY_PATH=~/Utils/TensorRT/lib:$LD_LIBRARY_PATH
 # Solectrix
 export PATH=~/video-app/src/release:$PATH
 
+# typer
+export _TYPER_STANDARD_TRACEBACK=1
+
 # python activate venv
 source ~/Utils/python_venvs/base/bin/activate
 
