@@ -68,11 +68,11 @@ elif [ "$STEP" = "2" ]; then
 
 elif [ "$STEP" = "3" ]; then
 
-    echo_title "Install Python3.10"
+    echo_title "Install Python3.12"
     echo_and_run sudo add-apt-repository ppa:deadsnakes/ppa
     echo_and_run sudo apt update
-    echo_and_run sudo apt install python3.10-dev python3.10-venv
-    echo_and_run python3.10 -m venv ~/Utils/python_venvs/base --upgrade-deps
+    echo_and_run sudo apt install python3.12-dev python3.12-venv
+    echo_and_run python3.12 -m venv ~/Utils/python_venvs/base --upgrade-deps
     echo_red "Reopen Terminal Required"
 
 elif [ "$STEP" = "4" ]; then
@@ -84,9 +84,10 @@ elif [ "$STEP" = "4" ]; then
     echo_and_run pip install pandas scikit-learn scikit-image --upgrade
     echo_and_run pip install opencv-contrib-python albumentations imagecodecs --upgrade
     echo_and_run pip install pynvim --upgrade
-    echo_and_run pip install torch torchvision torchmetrics kornia openmim --upgrade
-    echo_and_run mim install mmengine --upgrade
-    
+    echo_and_run pip install torch torchvision torchmetrics kornia mmengine --upgrade
+
+    # echo_and_run pip install openmim --upgrade
+    # echo_and_run mim install mmengine --upgrade
     # pip xarray requests bs4 seaborn xgboost imbalanced-learn tqdm
 
 elif [ "$STEP" = "5" ]; then
