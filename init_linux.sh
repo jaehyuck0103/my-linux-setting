@@ -48,11 +48,17 @@ if [ "$STEP" = "1" ]; then
     read -p "$(echo_red "Install Nvidia Driver (y/n)?")" CONT
     if [ "$CONT" = "y" ]; then
         echo_title "Install Nvidia Driver"
-        echo_and_run sudo add-apt-repository ppa:graphics-drivers/ppa
+        echo_and_run wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-keyring_1.1-1_all.deb
+        echo_and_run sudo dpkg -i cuda-keyring_1.1-1_all.deb
         echo_and_run sudo apt update
-        echo_and_run ubuntu-drivers devices
-        echo_and_run sudo ubuntu-drivers autoinstall
+        echo_and_run sudo apt install nvidia-open
         echo_red "System Reboot Recommended"
+
+        read -p "$(echo_red "Install CUDA (y/n)?")" CONT
+        if [ "$CONT" = "y" ]; then
+            echo_title "Install CUDA"
+            echo_and_run sudo apt install cuda-toolkit
+        fi
     fi
 
 elif [ "$STEP" = "2" ]; then
