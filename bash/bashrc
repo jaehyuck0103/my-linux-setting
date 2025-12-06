@@ -32,6 +32,23 @@ alias vim='neovim'
 alias tmux='tmux -2'
 alias zip0='function _zip0() { cd "$1" && zip -r -0 "../$(basename $PWD).zip" . && cd -; }; _zip0'
 
+# --- Jupytext → HTML 파이프라인 + 임시 ipynb 삭제 ---
+jupyhtml () {
+    if [[ -z "$1" ]]; then
+        echo "Usage: jupyhtml <script.py>"
+        return 1
+    fi
+
+    local script="$1"
+    local nb="${script%.py}.ipynb"
+    # local html="${script%.py}.html"
+
+    jupytext --to notebook "$script" \
+      && jupyter nbconvert --to html --execute --post serve --ServePostProcessor.open_in_browser=False "$nb" \
+      && rm -f "$nb"
+      # && google-chrome "$html"
+}
+
 # bash vi mode
 set -o vi
 
