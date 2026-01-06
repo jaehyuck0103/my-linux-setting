@@ -16,7 +16,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'jaehyuck0103/hicursorwords'
-" Plug 'ervandew/supertab'  " 자동완성을 tab으로 할 수 있도록, 아랫쪽에 추가한 coc 기본설정과 중복되어 제거
 
 Plug 'rebelot/kanagawa.nvim'
 
@@ -24,31 +23,19 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug'tpope/vim-unimpaired'   " buffer 스위칭 단축키가 잘 맵핑 되어 있음.
 
-Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'sbdchd/neoformat'
-Plug 'neovimhaskell/haskell-vim'
 
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'branch': 'master', 'do': ':TSUpdate'}  " branch master 없애야함...
 
 Plug 'lambdalisue/suda.vim'
 
 Plug 'mattn/webapi-vim'
 Plug 'mattn/vim-gist'
-
-" 보류
-" Plug 'tpope/vim-fugitive'
-" Plug 'Shougo/deol.nvim'
-" Plug 'Shougo/neosnippet.vim'
-" Plug 'Shougo/neosnippet-snippets'
-" L9  " script 모음??
-" command-ta " Fast File navigation
-" sparkup  " A parser for a condensed HTML format
 
 " Initialize plugin system
 call plug#end()
@@ -72,15 +59,8 @@ luafile ~/.config/nvim/lua-config/indent-blankline.lua
 " vim-airline
 source ~/.config/nvim/plug-config/vim-airline.vim
 
-" save 할 때, :RustFmt 자동 실행
-let g:rustfmt_autosave = 1
-
 " neoformat
 source ~/.config/nvim/plug-config/neoformat.vim
-
-" haskell-vim
-source ~/.config/nvim/plug-config/haskell-vim.vim
-
 
 " coc-vim
 source ~/.config/nvim/plug-config/coc.vim
@@ -104,17 +84,7 @@ let g:gist_show_privates = 1  " Show private gists with ":Gist -l":
 tnoremap <Esc> <C-\><C-N>
 
 
-"set hi=100  " 명령어 기록을 남길 갯수 지정
 set vb  " 오류음 대신 비주얼벨 사용
-"set lz  " 매크로 실행중에 화면을 다시 그리지 않음
-"set lpl  " 프로그램 시작시 플러그인 로드
-
-" 인코딩 설정 " 필요한가?
-" 문서를 읽을 때 BOM 을 자동으로 제거하려면, fencs 맨 앞에 ucs-bom 를 추가하세요. "
-" set enc=utf-8
-" set fenc=utf-8
-" set fencs=utf-8,cp949,cp932,euc-jp,shift-jis,big5,ucs-2le,latin1
-
 
 
 " --------------------------------------------------
