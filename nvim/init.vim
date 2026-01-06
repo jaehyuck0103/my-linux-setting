@@ -10,9 +10,6 @@ endif
 " Specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Better Syntax Support
-Plug 'sheerun/vim-polyglot'
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'jaehyuck0103/hicursorwords'
@@ -24,7 +21,6 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'cespare/vim-toml'
 Plug 'sbdchd/neoformat'
 
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
@@ -43,13 +39,6 @@ call plug#end()
 " --------------------------------------------------
 "  패키지 세부 설정
 " --------------------------------------------------
-" supertab
-let g:SuperTabDefaultCompletionType = "<c-n>"  " completion menu 위에서 아래로 스크롤하도록.
-
-" vim-polyglot
-""" python
-let g:python_highlight_all = 1
-
 " kanagawa
 luafile ~/.config/nvim/lua-config/kanagawa.lua
 
