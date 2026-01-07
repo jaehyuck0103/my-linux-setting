@@ -28,9 +28,8 @@ require("lazy").setup({
     'neoclide/coc.nvim',
     branch = 'release',
     config = function()
-      local config_path = vim.fn.stdpath('config')
-      vim.cmd('source ' .. config_path .. '/plug-config/coc.vim')
-      vim.cmd('source ' .. config_path .. '/plug-config/coc-extensions.vim')
+      vim.cmd("runtime plug-config/coc.vim")
+      vim.cmd("runtime plug-config/coc-extensions.vim")
       
       -- CoC 전용 키맵 (Lua 방식)
       vim.keymap.set('n', 'gs', ':CocCommand clangd.switchSourceHeader<CR>', { silent = true })
@@ -44,8 +43,7 @@ require("lazy").setup({
   {
     'rebelot/kanagawa.nvim',
     config = function()
-      -- 기존 설정 파일 로드
-      vim.cmd('luafile ' .. vim.fn.stdpath('config') .. '/lua-config/kanagawa.lua')
+      require("config.kanagawa")
       vim.cmd('colorscheme kanagawa') -- 테마 적용
     end
   },
@@ -54,7 +52,7 @@ require("lazy").setup({
   {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
-      vim.cmd('luafile ' .. vim.fn.stdpath('config') .. '/lua-config/indent-blankline.lua')
+      require("config.indent-blankline")
     end
   },
 
@@ -63,7 +61,7 @@ require("lazy").setup({
     'vim-airline/vim-airline',
     dependencies = { 'vim-airline/vim-airline-themes' },
     config = function()
-      vim.cmd('source ' .. vim.fn.stdpath('config') .. '/plug-config/vim-airline.vim')
+      vim.cmd("runtime plug-config/vim-airline.vim")
     end
   },
 
@@ -71,7 +69,7 @@ require("lazy").setup({
   {
     'sbdchd/neoformat',
     config = function()
-      vim.cmd('source ' .. vim.fn.stdpath('config') .. '/plug-config/neoformat.vim')
+      vim.cmd("runtime plug-config/neoformat.vim")
     end
   },
   
@@ -80,7 +78,7 @@ require("lazy").setup({
     'kyazdani42/nvim-tree.lua',
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     config = function()
-      vim.cmd('luafile ' .. vim.fn.stdpath('config') .. '/lua-config/nvim-tree.lua')
+      require("config.nvim-tree")
     end
   },
 
@@ -91,7 +89,7 @@ require("lazy").setup({
     lazy = false,
     build = ':TSUpdate',
     config = function()
-      vim.cmd('luafile ' .. vim.fn.stdpath('config') .. '/lua-config/treesitter.lua')
+      require("config.treesitter")
     end
   },
 
