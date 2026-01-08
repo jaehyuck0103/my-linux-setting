@@ -56,13 +56,41 @@ require("lazy").setup({
     end
   },
 
-  -- Airline
+  -- Bufferline
   {
-    'vim-airline/vim-airline',
-    dependencies = { 'vim-airline/vim-airline-themes' },
+    'akinsho/bufferline.nvim', 
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons',
+
+    init = function()
+      vim.opt.termguicolors = true
+
+      -- Buffer Switching
+      vim.keymap.set("n", "gb", "<cmd>bn<cr>")
+      vim.keymap.set("n", "gB", "<cmd>bp<cr>")
+    end,
+
     config = function()
-      vim.cmd("runtime plug-config/vim-airline.vim")
-    end
+      require("bufferline").setup({})
+    end,
+  },
+
+  -- Lualine
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+
+    opts = {
+      sections = {
+        lualine_c = {
+          { "filename", path = 1 }, -- 1: relative path
+        },
+      },
+    },
+
+    -- config = function()
+    --  require("lualine").setup({})
+    --end,
   },
 
   -- neoformat
@@ -141,7 +169,3 @@ vim.opt.visualbell = true      -- 오류음 대신 비주얼벨 사용 (set vb)
 -- --------------------------------------------------
 -- Terminal mode escape
 vim.keymap.set('t', '<Esc>', '<C-\\><C-N>', { noremap = true })
-
--- Buffer switching
-vim.keymap.set('n', 'gb', ':bn<CR>', { noremap = true })
-vim.keymap.set('n', 'gB', ':bp<CR>', { noremap = true })
