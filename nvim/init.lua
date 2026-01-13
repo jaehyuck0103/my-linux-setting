@@ -102,45 +102,23 @@ require("lazy").setup({
 
       -- 언어별 formatter 지정 (여러 개면 순차 실행)
       formatters_by_ft = {
-        python = { "isort", "black" },
+        python = { "ruff_organize_imports", "black" },
         cpp = { "clang-format" },
         c = { "clang-format" },
-        cuda = { "clang-format-cuda" },
+        cuda = { "clang-format" },
         sh = { "shfmt" },
+        lua = {"stylua" },
       },
       
       -- formatter 동작/옵션 커스터마이즈
       formatters = {
-        -- shfmt: neoformat의 g:shfmt_opt = "-ci"
-        -- prepend_args/args 방식 모두 가능. (args면 완전 override)
+
         shfmt = {
           prepend_args = { "-ci" },
         },
 
-        -- python: stdin 기반으로 black/isort 실행하던 것 재현
         black = {
-          inherit = false,
-          command = "black",
-          args = { "-q", "-l", "99", "-" },
-          stdin = true,
-        },
-        isort = {
-          inherit = false,
-          command = "isort",
-          args = { "-", "--quiet", "--profile", "black" },
-          stdin = true,
-        },
-
-        -- cuda: neoformat에서 쓰던 -assume-filename=<basename> 재현
-        -- args는 함수로도 가능 (ctx.filename 사용)
-        ["clang-format-cuda"] = {
-          inherit = false,
-          command = "clang-format",
-          stdin = true,
-          args = function(_, ctx)
-            local basename = vim.fn.fnamemodify(ctx.filename, ":t")
-            return { "-assume-filename=" .. basename }
-          end,
+          append_args = { "-l", "99" },
         },
       },
     },
