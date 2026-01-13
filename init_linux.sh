@@ -36,6 +36,7 @@ if [ "$STEP" = "1" ]; then
     echo_title "Essential Utils"
     echo_and_run sudo apt install build-essential git openssh-server tmux cmake
     echo_and_run sudo apt install libglfw3-dev libtbb-dev
+    echo_and_run sudo apt install shfmt
 
     read -p "$(echo_red "Install Google Chrome (y/n)?")" CONT
     if [ "$CONT" = "y" ]; then
@@ -90,8 +91,11 @@ elif [ "$STEP" = "4" ]; then
     echo_and_run pip install pandas scikit-learn scikit-image --upgrade
     echo_and_run pip install opencv-contrib-python albumentations imagecodecs --upgrade
     echo_and_run pip install pynvim --upgrade
-    echo_and_run pip install torch torchvision torchmetrics kornia mmengine --upgrade
+    echo_and_run pip install torch torchvision kornia --upgrade
 
+    echo_and_run pip install git+https://github.com/johnnymorganz/stylua --upgrade
+
+    # echo_and_run pip install torchmetrics mmengine --upgrade
     # echo_and_run pip install openmim --upgrade
     # echo_and_run mim install mmengine --upgrade
     # pip xarray requests bs4 seaborn xgboost imbalanced-learn tqdm
@@ -122,7 +126,7 @@ elif [ "$STEP" = "7" ]; then # https://apt.llvm.org/
 
     REPO_NAME="deb http://apt.llvm.org/${UBUNTU_CODENAME}/   llvm-toolchain-${UBUNTU_CODENAME}  main"
     echo_and_run sudo add-apt-repository "${REPO_NAME}"
-    wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc  # echo_and_run 붙이면 안되서 제외.
+    wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc # echo_and_run 붙이면 안되서 제외.
     echo_and_run sudo apt update
     echo_and_run sudo apt install clangd clang-format
 
@@ -131,7 +135,7 @@ elif [ "$STEP" = "8" ]; then
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 
     export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
     echo_and_run nvm install --lts
 
 elif [ "$STEP" = "9" ]; then
@@ -147,7 +151,7 @@ elif [ "$STEP" = "9" ]; then
     echo_and_run mkdir -p build && cd build
 
     echo_and_run cmake -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-master/modules -DOPENCV_ENABLE_NONFREE=ON ../opencv-master
-    echo_and_run make -j`nproc`
+    echo_and_run make -j$(nproc)
     echo_and_run sudo make install
 
 elif [ "$STEP" = "10" ]; then

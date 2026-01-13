@@ -9,5 +9,5 @@ local my_colors = {
 	carpYellow = "#D0D0D0",
 }
 
-require("kanagawa").setup({ colors = { palette = my_colors }})
+require("kanagawa").setup({ colors = { palette = my_colors } })
 vim.cmd("colorscheme kanagawa")

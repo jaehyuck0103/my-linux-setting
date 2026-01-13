@@ -1,17 +1,17 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+			{ out, "WarningMsg" },
+			{ "\nPress any key to exit..." },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
+	end
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -23,153 +23,152 @@ vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
-  -- CoC
-  {
-    'neoclide/coc.nvim',
-    branch = 'release',
-    config = function()
-      vim.cmd("runtime plug-config/coc.vim")
-      vim.cmd("runtime plug-config/coc-extensions.vim")
-      
-      -- CoC 전용 키맵 (Lua 방식)
-      vim.keymap.set('n', 'gs', ':CocCommand clangd.switchSourceHeader<CR>', { silent = true })
-    end
-  },
+	-- CoC
+	{
+		"neoclide/coc.nvim",
+		branch = "release",
+		config = function()
+			vim.cmd("runtime plug-config/coc.vim")
+			vim.cmd("runtime plug-config/coc-extensions.vim")
 
-  -- hicursorwords
-  'jaehyuck0103/hicursorwords',
+			-- CoC 전용 키맵 (Lua 방식)
+			vim.keymap.set("n", "gs", ":CocCommand clangd.switchSourceHeader<CR>", { silent = true })
+		end,
+	},
 
-  -- Kanagawa Theme
-  {
-    'rebelot/kanagawa.nvim',
-    config = function()
-      require("config.kanagawa")
-      vim.cmd('colorscheme kanagawa') -- 테마 적용
-    end
-  },
+	-- hicursorwords
+	"jaehyuck0103/hicursorwords",
 
-  -- Indent Blankline
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    config = function()
-      require("config.indent-blankline")
-    end
-  },
+	-- Kanagawa Theme
+	{
+		"rebelot/kanagawa.nvim",
+		config = function()
+			require("config.kanagawa")
+			vim.cmd("colorscheme kanagawa") -- 테마 적용
+		end,
+	},
 
-  -- Bufferline
-  {
-    'akinsho/bufferline.nvim', 
-    version = "*",
-    dependencies = 'nvim-tree/nvim-web-devicons',
+	-- Indent Blankline
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("config.indent-blankline")
+		end,
+	},
 
-    init = function()
-      vim.opt.termguicolors = true
+	-- Bufferline
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
 
-      -- Buffer Switching
-      vim.keymap.set("n", "gb", "<cmd>bn<cr>")
-      vim.keymap.set("n", "gB", "<cmd>bp<cr>")
-    end,
+		init = function()
+			vim.opt.termguicolors = true
 
-    config = function()
-      require("bufferline").setup({})
-    end,
-  },
+			-- Buffer Switching
+			vim.keymap.set("n", "gb", "<cmd>bn<cr>")
+			vim.keymap.set("n", "gB", "<cmd>bp<cr>")
+		end,
 
-  -- Lualine
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+		config = function()
+			require("bufferline").setup({})
+		end,
+	},
 
-    opts = {
-      sections = {
-        lualine_c = {
-          { "filename", path = 1 }, -- 1: relative path
-        },
-      },
-    },
-  },
+	-- Lualine
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 
-  -- conform (formatter)
-  {
-    'stevearc/conform.nvim',
-    event = { "BufWritePre" },
-    cmd = { "ConformInfo" },
-    opts = {
-      format_on_save = {
-        timeout_ms = 500,
-        lsp_format = "fallback",
-      },
+		opts = {
+			sections = {
+				lualine_c = {
+					{ "filename", path = 1 }, -- 1: relative path
+				},
+			},
+		},
+	},
 
-      -- 언어별 formatter 지정 (여러 개면 순차 실행)
-      formatters_by_ft = {
-        python = { "ruff_organize_imports", "black" },
-        cpp = { "clang-format" },
-        c = { "clang-format" },
-        cuda = { "clang-format" },
-        sh = { "shfmt" },
-        lua = {"stylua" },
-      },
-      
-      -- formatter 동작/옵션 커스터마이즈
-      formatters = {
+	-- conform (formatter)
+	{
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		opts = {
+			format_on_save = {
+				timeout_ms = 500,
+				lsp_format = "fallback",
+			},
 
-        shfmt = {
-          prepend_args = { "-ci" },
-        },
+			-- 언어별 formatter 지정 (여러 개면 순차 실행)
+			formatters_by_ft = {
+				python = { "ruff_organize_imports", "black" },
+				cpp = { "clang-format" },
+				c = { "clang-format" },
+				cuda = { "clang-format" },
+				sh = { "shfmt" },
+				lua = { "stylua" },
+			},
 
-        black = {
-          append_args = { "-l", "99" },
-        },
-      },
-    },
-  },
-  
-  -- nvim-tree
-  {
-    'kyazdani42/nvim-tree.lua',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
-    config = function()
-      require("config.nvim-tree")
-    end
-  },
+			-- formatter 동작/옵션 커스터마이즈
+			formatters = {
 
-  -- Treesitter  -- master없애야함
-  {
-    'nvim-treesitter/nvim-treesitter',
-    branch = 'master',
-    lazy = false,
-    build = ':TSUpdate',
-    config = function()
-      require("config.treesitter")
-    end
-  },
+				shfmt = {
+					prepend_args = { "-ci" },
+				},
 
-  -- suda
-  'lambdalisue/suda.vim',
+				black = {
+					append_args = { "-l", "99" },
+				},
+			},
+		},
+	},
 
-  -- Gist
-  {
-    'mattn/vim-gist',
-    dependencies = { 'mattn/webapi-vim' },
-    config = function()
-      vim.g.gist_post_private = 1
-      vim.g.gist_show_privates = 1
-    end
-  },
+	-- nvim-tree
+	{
+		"kyazdani42/nvim-tree.lua",
+		dependencies = { "kyazdani42/nvim-web-devicons" },
+		config = function()
+			require("config.nvim-tree")
+		end,
+	},
+
+	-- Treesitter  -- master없애야함
+	{
+		"nvim-treesitter/nvim-treesitter",
+		branch = "master",
+		lazy = false,
+		build = ":TSUpdate",
+		config = function()
+			require("config.treesitter")
+		end,
+	},
+
+	-- suda
+	"lambdalisue/suda.vim",
+
+	-- Gist
+	{
+		"mattn/vim-gist",
+		dependencies = { "mattn/webapi-vim" },
+		config = function()
+			vim.g.gist_post_private = 1
+			vim.g.gist_show_privates = 1
+		end,
+	},
 })
-
 
 -- --------------------------------------------------
 --  4. 편집 기능 설정 (Options)
 -- --------------------------------------------------
-vim.opt.number = true          -- 줄 번호 표시
-vim.opt.wrap = false           -- 자동 줄바꿈 안함
-vim.opt.wrapscan = false       -- 검색 시 파일 끝에서 처음으로 돌아가지 않음 (nowrapscan)
-vim.opt.expandtab = true       -- 탭을 스페이스로 변환
-vim.opt.title = true           -- 타이틀바에 파일명 표시
-vim.opt.tabstop = 4            -- 탭 너비
-vim.opt.shiftwidth = 4         -- 인덴트 너비
-vim.opt.visualbell = true      -- 오류음 대신 비주얼벨 사용 (set vb)
+vim.opt.number = true -- 줄 번호 표시
+vim.opt.wrap = false -- 자동 줄바꿈 안함
+vim.opt.wrapscan = false -- 검색 시 파일 끝에서 처음으로 돌아가지 않음 (nowrapscan)
+vim.opt.expandtab = true -- 탭을 스페이스로 변환
+vim.opt.title = true -- 타이틀바에 파일명 표시
+vim.opt.tabstop = 4 -- 탭 너비
+vim.opt.shiftwidth = 4 -- 인덴트 너비
+vim.opt.visualbell = true -- 오류음 대신 비주얼벨 사용 (set vb)
 -- set backspace=2         " 삽입 모드에서 백스페이스를 계속 허용
 -- set autoindent             " 자동 들여쓰기
 -- set cindent             " C 언어 자동 들여쓰기
@@ -191,4 +190,4 @@ vim.opt.visualbell = true      -- 오류음 대신 비주얼벨 사용 (set vb)
 --  5. 키 맵핑 (Keymaps)
 -- --------------------------------------------------
 -- Terminal mode escape
-vim.keymap.set('t', '<Esc>', '<C-\\><C-N>', { noremap = true })
+vim.keymap.set("t", "<Esc>", "<C-\\><C-N>", { noremap = true })
