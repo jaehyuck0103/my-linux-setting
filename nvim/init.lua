@@ -106,6 +106,7 @@ require("lazy").setup({
 				cpp = { "clang-format" },
 				c = { "clang-format" },
 				cuda = { "clang-format" },
+				cmake = { "cmake_format" },
 				sh = { "shfmt" },
 				lua = { "stylua" },
 			},
