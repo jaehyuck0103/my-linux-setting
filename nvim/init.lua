@@ -36,8 +36,40 @@ require("lazy").setup({
 		end,
 	},
 
-	-- hicursorwords
-	"jaehyuck0103/hicursorwords",
+	-- vim-illuminate
+	{
+		"RRethy/vim-illuminate",
+		opts = {
+			-- 어떤 엔진을 쓸지 결정 (LSP/Treesitter 무시하고 싶으면 "regex"만 남기기)
+			providers = {
+				-- "lsp",
+				-- "treesitter",
+				"regex",
+			},
+		},
+		config = function(_, opts)
+			require("illuminate").configure(opts)
+
+			local function set_kanagawa_illuminate()
+				local hi_color = "#7FB4CA" -- 단어 글자색
+
+				-- 1. 일반적인 텍스트 일치 (Regex 기반 등)
+				vim.api.nvim_set_hl(0, "IlluminatedWordText", { fg = hi_color, bold = true, underline = true })
+				-- 2. LSP가 '읽기'로 판단한 경우
+				vim.api.nvim_set_hl(0, "IlluminatedWordRead", { fg = hi_color, bold = true, underline = true })
+				-- 3. LSP가 '쓰기/수정'으로 판단한 경우
+				vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { fg = hi_color, bold = true, underline = true })
+			end
+
+			-- 설정 적용
+			set_kanagawa_illuminate()
+
+			-- 테마를 다시 로드하거나 변경해도 유지되도록 함
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				callback = set_kanagawa_illuminate,
+			})
+		end,
+	},
 
 	-- Kanagawa Theme
 	{
