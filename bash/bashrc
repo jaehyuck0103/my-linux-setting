@@ -30,10 +30,68 @@ source ~/Utils/python_venvs/base/bin/activate
 # alias
 alias vim='neovim'
 alias tmux='tmux -2'
-alias zip0='function _zip0() { cd "$1" && zip -r -0 "../$(basename $PWD).zip" . && cd -; }; _zip0'
+# alias zip0='function _zip0() { cd "$1" && zip -r -0 "../$(basename $PWD).zip" . && cd -; }; _zip0'
+
+zip0() {
+    # 1. 인자가 입력되었는지 확인
+    if [ -z "$1" ]; then
+        echo "사용법: zip0 <디렉토리명>"
+        return 1
+    fi
+
+    # 2. 입력된 인자가 실제 디렉토리인지 확인
+    if [ ! -d "$1" ]; then
+        echo "오류: '$1'은(는) 유효한 디렉토리가 아닙니다."
+        return 1
+    fi
+
+    # 3. 서브쉘 ( ) 을 사용해 디렉토리 이동 및 압축 수행
+    # 서브쉘을 쓰면 함수가 끝난 뒤 원래 위치로 돌아오기 위해 cd - 를 할 필요가 없습니다.
+    (
+        cd "$1" || exit 1
+        local folder_name
+        folder_name=$(basename "$PWD")
+
+        echo "압축 중: $folder_name.zip ..."
+        zip -r -0 "../$folder_name.zip" .
+    )
+}
+
+# 현재 경로의 모든 디렉토리를 각각 zip0 압축
+zip0_all() {
+    for d in */; do
+        [ -e "$d" ] || continue # 디렉토리가 없으면 스킵
+        zip0 "${d%/}"
+    done
+}
+
+# gnu parallel 버전
+zip0_parallel() {
+    # zip0 함수를 서브쉘에서도 쓸 수 있게 'export'
+    export -f zip0
+
+    # 현재 디렉토리의 폴더들을 배열로 담기
+    local dirs=(*/)
+
+    # 폴더가 없는 경우 처리
+    if [ ! -e "${dirs[0]}" ]; then
+        echo "압축할 디렉토리가 없습니다."
+        return 1
+    fi
+
+    echo "병렬 압축 시작 (GNU Parallel 인자 모드)..."
+
+    # ::: 문법을 사용하여 배열을 직접 전달
+    # --no-notice: 저작권 공지 생략
+    # --bar: 진행 상태 바 표시 (선택 사항)
+    parallel --no-notice --bar zip0 ::: "${dirs[@]%/}"
+
+    echo "-------------------------------------------"
+    echo "모든 병렬 압축 작업이 완료되었습니다."
+}
 
 # --- Jupytext → HTML 파이프라인 + 임시 ipynb 삭제 ---
-jupyhtml () {
+jupyhtml() {
     if [[ -z "$1" ]]; then
         echo "Usage: jupyhtml <script.py>"
         return 1
@@ -43,10 +101,10 @@ jupyhtml () {
     local nb="${script%.py}.ipynb"
     # local html="${script%.py}.html"
 
-    jupytext --to notebook "$script" \
-      && jupyter nbconvert --to html --execute --post serve --ServePostProcessor.open_in_browser=False "$nb" \
-      && rm -f "$nb"
-      # && google-chrome "$html"
+    jupytext --to notebook "$script" &&
+        jupyter nbconvert --to html --execute --post serve --ServePostProcessor.open_in_browser=False "$nb" &&
+        rm -f "$nb"
+    # && google-chrome "$html"
 }
 
 # bash vi mode
