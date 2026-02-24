@@ -166,10 +166,10 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Treesitter  -- master없애야함
+	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		branch = "master",
+		branch = "main",
 		lazy = false,
 		build = ":TSUpdate",
 		config = function()

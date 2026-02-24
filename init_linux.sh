@@ -23,8 +23,9 @@ echo_red "Step5: Neovim"
 echo_red "Step6: Dropbox"
 echo_red "Step7: clangd, clang-format"
 echo_red "Step8: Install node by nvm"
-echo_red "Step9: Install OpenCV"
-echo_red "Step10: Install Syncthing"
+echo_red "Step9: Install npm packages"
+echo_red "Step10: Install OpenCV"
+echo_red "Step11: Install Syncthing"
 read -p "$(echo_red "Which step?")" STEP
 
 if [ "$STEP" = "1" ]; then
@@ -139,6 +140,11 @@ elif [ "$STEP" = "8" ]; then
     echo_and_run nvm install --lts
 
 elif [ "$STEP" = "9" ]; then
+    echo_title "Install npm packages"
+
+    echo_and_run npm install -g tree-sitter-cli
+
+elif [ "$STEP" = "10" ]; then
     echo_title "Install OpenCV"
     echo_and_run sudo apt install libgtk-3-dev
     echo_and_run mkdir -p ~/Utils/opencv
@@ -154,7 +160,7 @@ elif [ "$STEP" = "9" ]; then
     echo_and_run make -j$(nproc)
     echo_and_run sudo make install
 
-elif [ "$STEP" = "10" ]; then
+elif [ "$STEP" = "11" ]; then
     echo_title "Install Syncthing"
     # Add the release PGP keys:
     sudo curl -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
