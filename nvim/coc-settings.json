@@ -2,7 +2,7 @@
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextCurrentLineOnly": false,
     "workspace.rootPatterns": [".git", ".hg", ".projections.json", "pyproject.toml", ".coc_root"],
-    "coc.preferences.extensionUpdateCheck": "weekly",
+    "extensions.updateCheck": "weekly",
     "inlayHint.enable": false,
     "suggest.noselect": true,
 

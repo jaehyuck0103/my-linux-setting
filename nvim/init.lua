@@ -28,8 +28,15 @@ require("lazy").setup({
 		"neoclide/coc.nvim",
 		branch = "release",
 		config = function()
-			vim.cmd("runtime plug-config/coc.vim")
-			vim.cmd("runtime plug-config/coc-extensions.vim")
+			require("config.coc")
+
+			-- Check intall when startup
+			vim.g.coc_global_extensions = {
+				"coc-pyright",
+				"coc-json",
+				"coc-clangd",
+				"coc-rust-analyzer",
+			}
 
 			-- CoC 전용 키맵 (Lua 방식)
 			vim.keymap.set("n", "gs", ":CocCommand clangd.switchSourceHeader<CR>", { silent = true })
