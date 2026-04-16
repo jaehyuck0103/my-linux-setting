@@ -12,13 +12,6 @@ mkdir -p ~/Projects
 ln -sf $(realpath ./clang-format/clang-format) ~/.clang-format
 ln -sf $(realpath ./clang-format/clang-format) ~/Projects/.clang-format
 
-
-sudo apt install fail2ban
-sudo cp ./fail2ban/jail.local /etc/fail2ban/
-sudo systemctl enable fail2ban
-sudo systemctl start fail2ban
-
-
 if grep -q "# source my-linux-setting" ~/.bashrc; then
     echo "The bashrc already contains my-linux-setting."
 else

@@ -38,6 +38,7 @@ if [ "$STEP" = "1" ]; then
     echo_and_run sudo apt install build-essential git openssh-server tmux cmake
     echo_and_run sudo apt install libglfw3-dev libtbb-dev
     echo_and_run sudo apt install shfmt
+    echo_and_run sudo apt install sshguard
 
     read -p "$(echo_red "Install Google Chrome (y/n)?")" CONT
     if [ "$CONT" = "y" ]; then
@@ -92,7 +93,7 @@ elif [ "$STEP" = "4" ]; then
     echo_and_run pip install pandas scikit-learn scikit-image --upgrade
     echo_and_run pip install opencv-contrib-python albumentations imagecodecs --upgrade
     echo_and_run pip install pynvim --upgrade
-    echo_and_run pip install torch torchvision kornia --upgrade
+    echo_and_run pip install torch torchvision kornia accelerate --upgrade
 
     echo_and_run pip install git+https://github.com/johnnymorganz/stylua --upgrade
 
