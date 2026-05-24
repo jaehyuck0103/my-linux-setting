@@ -24,6 +24,10 @@ export PATH=~/video-app/src/release:$PATH
 # typer
 export _TYPER_STANDARD_TRACEBACK=1
 
+# claude code
+export ANTHROPIC_MODEL=opus
+export CLAUDE_CODE_EFFORT_LEVEL=max
+
 # python activate venv
 source ~/Utils/python_venvs/base/bin/activate
 
