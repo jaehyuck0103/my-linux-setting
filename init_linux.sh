@@ -26,6 +26,7 @@ echo_red "Step8: Install node by nvm"
 echo_red "Step9: Install npm packages"
 echo_red "Step10: Install OpenCV"
 echo_red "Step11: Install Syncthing"
+echo_red "Step12: Kernel Setting"
 read -p "$(echo_red "Which step?")" STEP
 
 if [ "$STEP" = "1" ]; then
@@ -91,7 +92,7 @@ elif [ "$STEP" = "4" ]; then
     echo_and_run pip install ruff black isort cmakelang --upgrade
     echo_and_run pip install numpy scipy matplotlib pydantic python-box typer tensorboard --upgrade
     echo_and_run pip install pandas scikit-learn scikit-image --upgrade
-    echo_and_run pip install opencv-contrib-python albumentations imagecodecs --upgrade
+    echo_and_run pip install opencv-contrib-python albumentations imagecodecs colour-hdri --upgrade
     echo_and_run pip install pynvim --upgrade
     echo_and_run pip install torch torchvision kornia accelerate --upgrade
 
@@ -174,4 +175,10 @@ elif [ "$STEP" = "11" ]; then
     # Starting Syncthing Automatically
     systemctl enable "syncthing@${USER}.service"
     systemctl start "syncthing@${USER}.service"
+
+elif [ "$STEP" = "12" ]; then
+    echo_title "Kernel Setting"
+    # defrag 정책을 defer로 변경 (THP를 즉시 만들기 어렵다면 요청 스레드가 직접 컴팩션하지 않고 백그라운드 스레드를 통해 처리)
+    echo 'w /sys/kernel/mm/transparent_hugepage/defrag - - - - defer' | sudo tee /etc/tmpfiles.d/transparent-hugepage.conf >/dev/null
+
 fi
