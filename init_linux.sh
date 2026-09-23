@@ -95,6 +95,7 @@ elif [ "$STEP" = "4" ]; then
     echo_and_run pip install opencv-contrib-python albumentations imagecodecs colour-hdri --upgrade
     echo_and_run pip install pynvim --upgrade
     echo_and_run pip install torch torchvision kornia accelerate --upgrade
+    echo_and_run pip install nvidia-ml-py --upgrade # accelerate에서 ACCELERATE_CPU_AFFINITY=1 옵션 사용하기 위해..
 
     echo_and_run pip install git+https://github.com/johnnymorganz/stylua --upgrade
 

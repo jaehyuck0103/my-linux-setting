@@ -28,6 +28,9 @@ export _TYPER_STANDARD_TRACEBACK=1
 export ANTHROPIC_MODEL=best
 export CLAUDE_CODE_EFFORT_LEVEL=max
 
+# Hugging Accelerate (GPU와 NUMA-local한 CPU에 프로세스 배치)
+export ACCELERATE_CPU_AFFINITY=1
+
 # python activate venv
 source ~/Utils/python_venvs/base/bin/activate
 
