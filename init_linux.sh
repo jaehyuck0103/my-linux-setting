@@ -181,4 +181,5 @@ elif [ "$STEP" = "12" ]; then
     # defrag 정책을 defer로 변경 (THP를 즉시 만들기 어렵다면 요청 스레드가 직접 컴팩션하지 않고 백그라운드 스레드를 통해 처리)
     echo 'w /sys/kernel/mm/transparent_hugepage/defrag - - - - defer' | sudo tee /etc/tmpfiles.d/transparent-hugepage.conf >/dev/null
 
+    echo "vm.watermark_scale_factor = 200" | sudo tee /etc/sysctl.d/local.conf
 fi
