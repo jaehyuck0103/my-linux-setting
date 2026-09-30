@@ -25,7 +25,7 @@ export PATH=~/video-app/src/release:$PATH
 export _TYPER_STANDARD_TRACEBACK=1
 
 # claude code
-export ANTHROPIC_MODEL=best
+# export ANTHROPIC_MODEL=best
 export CLAUDE_CODE_EFFORT_LEVEL=max
 
 # Hugging Accelerate (GPU와 NUMA-local한 CPU에 프로세스 배치)
