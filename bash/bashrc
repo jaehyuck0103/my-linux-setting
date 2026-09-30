@@ -114,6 +114,16 @@ jupyhtml() {
     # && google-chrome "$html"
 }
 
+# rsync로 폴더 용량 및 파일갯수 체크
+rsync_stats() {
+    if [ "$#" -ne 1 ]; then
+        echo "usage: rsync_stats <directory>"
+        return 1
+    fi
+
+    rsync -ax --dry-run --stats "$1" /tmp
+}
+
 # bash vi mode
 set -o vi
 
