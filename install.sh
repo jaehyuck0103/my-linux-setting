@@ -17,8 +17,15 @@ if grep -q "# source my-linux-setting" ~/.bashrc; then
 else
     echo "Add my-linux-setting to bashrc."
 
-    echo "" >> ~/.bashrc
-    echo "" >> ~/.bashrc
-    echo "# source my-linux-setting" >> ~/.bashrc
-    echo "source ~/Utils/my-linux-setting/bash/bashrc" >> ~/.bashrc
+    echo "" >>~/.bashrc
+    echo "" >>~/.bashrc
+    echo "# source my-linux-setting" >>~/.bashrc
+    echo "source ~/Utils/my-linux-setting/bash/bashrc" >>~/.bashrc
+fi
+
+if git config --global --get-all include.path | grep -q "my-linux-setting"; then
+    echo "The gitconfig already contains my-linux-setting."
+else
+    echo "Add my-linux-setting to gitconfig."
+    git config --global --add include.path "~/Utils/my-linux-setting/git/gitconfig"
 fi

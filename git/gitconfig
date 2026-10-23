@@ -1,0 +1,3 @@
+[alias]
+	wdiff = diff --word-diff=color
+	wdiffp = diff --word-diff=plain
