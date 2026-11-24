@@ -31,6 +31,9 @@ export CLAUDE_CODE_EFFORT_LEVEL=max
 # Hugging Accelerate (GPU와 NUMA-local한 CPU에 프로세스 배치)
 # export ACCELERATE_CPU_AFFINITY=1
 
+# LLVM
+export PATH=~/Utils/LLVM/bin:$PATH
+
 # python activate venv
 source ~/Utils/python_venvs/base/bin/activate
 
